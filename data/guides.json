@@ -210,29 +210,51 @@
         "actionTarget": "rti"
     },
     {
-        "id": "cybercrime-complaint",
-        "title": "Reporting Cybercrime",
-        "description": "How to report online harassment and cybercrimes under Digital Security Act 2018",
-        "category": "Digital Rights",
+        "id": "family-court-overview",
+        "title": "Family Court Basics (Prototype)",
+        "description": "High-level overview for maintenance/divorce/child custody under Family Courts Ordinance 2023 (demo content)",
+        "category": "Family Courts",
         "steps": [
             {
-                "title": "Preserve Evidence",
-                "description": "Take screenshots of offensive content, save URLs, note dates/times. Don't delete anything. Evidence is crucial for Digital Security Act cases."
+                "title": "Identify Your Matter",
+                "description": "Confirm if your issue relates to maintenance, dower, dissolution of marriage, or custody."
             },
             {
-                "title": "Determine the Offense Type",
-                "description": "Identity if it's harassment (Section 25), defamation (Section 29), or threat to law and order (Section 31). This determines the complaint procedure."
+                "title": "Collect Basic Documents",
+                "description": "NID, marriage/divorce documents (if any), birth certificates (for children), and any relevant receipts/records."
             },
             {
-                "title": "File Police Complaint",
-                "description": "Visit your nearest police station or Cyber Crime Unit. They must accept complaints related to Digital Security Act offenses. Get a complaint receipt."
+                "title": "Draft a Plain Application",
+                "description": "Prepare a simple statement of facts and relief sought. This demo provides only a generic template."
             },
             {
-                "title": "Follow Up Investigation",
-                "description": "Police will investigate and may file case in Cyber Tribunal. Cooperate with investigation and provide additional evidence if requested."
+                "title": "Submit to Family Court",
+                "description": "File at the appropriate Family Court with court fees as applicable."
             }
         ],
-        "actionText": "Generate a Cybercrime Complaint",
-        "actionTarget": "complaint"
+        "actionText": "Generate a Basic Application",
+        "actionTarget": "application"
+    },
+    {
+        "id": "road-transport-basics",
+        "title": "Road Transport Basics (Prototype)",
+        "description": "Essential steps for traffic fines and documents under the Road Transport Act 2018 (demo content)",
+        "category": "Road Safety",
+        "steps": [
+            {
+                "title": "Keep Documents Ready",
+                "description": "Driving license, registration, fitness, insurance. Ensure validity to avoid penalties."
+            },
+            {
+                "title": "Fine and Payment",
+                "description": "If fined, pay through official channels and keep the receipt. This demo does not integrate payment."
+            },
+            {
+                "title": "Dispute Option",
+                "description": "You may seek legal remedy for wrongful fines following due procedures. This demo shows generic steps only."
+            }
+        ],
+        "actionText": "Generate a Generic Application",
+        "actionTarget": "application"
     }
 ]

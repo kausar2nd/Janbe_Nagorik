@@ -347,6 +347,14 @@ function showSection(sectionName) {
 
     const newSection = document.getElementById(sectionName);
 
+    // Always scroll to top when changing sections
+    try {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (e) {
+        // Fallback for older browsers
+        window.scrollTo(0, 0);
+    }
+
     // Add entrance animation to new section
     newSection.style.animation = 'slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
     newSection.classList.add('active');
@@ -436,7 +444,7 @@ function sendMessage() {
     // Find answer
     setTimeout(() => {
         const response = findAnswer(question);
-        addMessage(response.answer, 'bot', response.action);
+        addMessage(response.answer, 'bot', response.action, response.sources);
     }, 1000);
 }
 
@@ -446,7 +454,7 @@ function handleChatKeyPress(event) {
     }
 }
 
-function addMessage(content, sender, action = null) {
+function addMessage(content, sender, action = null, sources = null) {
     const chatMessages = document.getElementById('chatMessages');
     const messageDiv = document.createElement('div');
     messageDiv.className = `chat-message ${sender}-message fade-in`;
@@ -456,15 +464,54 @@ function addMessage(content, sender, action = null) {
         actionButton = `<button class="action-button" onclick="handleChatAction('${action.target}')">${action.text}</button>`;
     }
 
+    let sourcesHtml = '';
+    if (sources && sources.length > 0) {
+        const sourcesId = `sources-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+        sourcesHtml = `
+            <div class="sources-toggle">
+                <button class="toggle-sources-btn" onclick="toggleSources('${sourcesId}')">
+                    <span class="toggle-icon">📖</span> Sources Used
+                    <span class="toggle-arrow">▼</span>
+                </button>
+                <div class="sources-content" id="${sourcesId}" style="display: none;">
+                    <ul class="sources-list">
+                        ${sources.map(source => `<li>${source}</li>`).join('')}
+                    </ul>
+                </div>
+            </div>
+        `;
+    }
+
     messageDiv.innerHTML = `
         <div class="message-content">
             <p>${content}</p>
+            ${sourcesHtml}
             ${actionButton}
         </div>
     `;
 
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+function toggleSources(sourcesId) {
+    const sourcesContent = document.getElementById(sourcesId);
+    const toggleBtn = sourcesContent.previousElementSibling;
+    const arrow = toggleBtn.querySelector('.toggle-arrow');
+
+    if (sourcesContent.style.display === 'none') {
+        sourcesContent.style.display = 'block';
+        sourcesContent.style.animation = 'slideUp 0.3s ease-out forwards';
+        arrow.textContent = '▲';
+        arrow.style.transform = 'rotate(180deg)';
+    } else {
+        sourcesContent.style.animation = 'fadeOut 0.2s ease-out forwards';
+        arrow.textContent = '▼';
+        arrow.style.transform = 'rotate(0deg)';
+        setTimeout(() => {
+            sourcesContent.style.display = 'none';
+        }, 200);
+    }
 }
 
 function findAnswer(question) {
@@ -479,6 +526,7 @@ function findAnswer(question) {
             faqKeywords.includes(lowerQuestion.substring(0, 20))) {
             return {
                 answer: faq.answer,
+                sources: faq.sources || [],
                 action: faq.actionText ? {
                     text: faq.actionText,
                     target: faq.actionTarget
@@ -501,6 +549,7 @@ function findAnswer(question) {
         if (matchCount >= 2) {
             return {
                 answer: faq.answer,
+                sources: faq.sources || [],
                 action: faq.actionText ? {
                     text: faq.actionText,
                     target: faq.actionTarget
@@ -510,7 +559,8 @@ function findAnswer(question) {
     }
 
     return {
-        answer: "I understand your question, but I don't have specific information about that topic in my current knowledge base. My expertise covers Consumer Rights Protection Act 2009, Premises Rent Act 1991, Digital Security Act 2018, Right to Information Act 2009, and relevant sections of the Penal Code 1860. Please try asking about tenant rights, consumer protection, online harassment, information access, or criminal matters. You can also browse our Service Guides section for step-by-step instructions.",
+        answer: "I understand your question, but I don't have specific information about that topic in my current knowledge base. I can help with: Consumer Rights Protection Act 2009, Right to Information Act 2009, Penal Code 1860, Premises Rent Control Act 1991, Family Courts Ordinance 2023, and Road Transport Act 2018. Try asking about consumer rights, tenant issues, requesting information, basic criminal matters, family court basics, or road transport essentials. You can also browse our Service Guides for step-by-step instructions.",
+        sources: [],
         action: null
     };
 } function handleChatAction(target) {
@@ -730,7 +780,7 @@ function submitSuggestion(guideId) {
         return;
     }
 
-    // Demo functionality - in real app, this would be sent to server
+    // Submit suggestion to server
     const suggestionData = {
         guideId: guideId,
         type: suggestionType,

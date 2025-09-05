@@ -35,13 +35,15 @@
         <section id="home" class="section active">
             <div class="container">
                 <div class="hero">
-                    <h1>Break the Cycle of Confusion and Helplessness</h1>
-                    <p>From not knowing your rights to taking confident action - Janbe Nagorik guides you through every
-                        step of civic empowerment.</p>
+                    <h1>Empowering Citizens With Clear, Actionable Paths</h1>
+                    <p>Navigate the legal system with confidence. Get clear guidance on your rights and generate
+                        professional documents for legal and government matters.</p>
                     <div class="problem-statement">
-                        <p><strong>Facing a problem?</strong> Illegal charges, security deposit disputes, consumer
-                            fraud? Don't stay helpless. Get the knowledge, process guidance, and action tools you need.
-                        </p>
+                        <p><strong>Legal Coverage:</strong> Consumer Rights Protection Act 2009, Right to Information
+                            Act 2009,
+                            Penal Code 1860, Premises Rent Control Act 1991, Family Courts Ordinance 2023, and Road
+                            Transport Act 2018 —
+                            plus essential public services (passport, birth certificate, trade license).</p>
                     </div>
                     <div class="hero-modules">
                         <div class="module-card" onclick="showSection('gyan')">
@@ -49,8 +51,7 @@
                             <h3>Gyan</h3>
                             <p>Legal Knowledge Assistant</p>
                             <p class="module-desc">Ask legal questions in plain Bengali or English. Get simple answers
-                                from actual Bangladeshi laws with sources cited.</p>
-                            <p class="module-analogy"><em>Like Google Search, but specifically for Bangladeshi laws</em>
+                                from actual Bangladeshi laws with sources cited.
                             </p>
                         </div>
                         <div class="module-card" onclick="showSection('sheba')">
@@ -59,7 +60,6 @@
                             <p>Government Process Wiki</p>
                             <p class="module-desc">Step-by-step guides for government services with required documents,
                                 fees, and office locations.</p>
-                            <p class="module-analogy"><em>Like a recipe book for dealing with the government</em></p>
                         </div>
                         <div class="module-card" onclick="showSection('protirodh')">
                             <div class="module-icon">⚖️</div>
@@ -67,7 +67,6 @@
                             <p>Smart Document Generator</p>
                             <p class="module-desc">Generate professional drafts of official documents by answering
                                 simple questions.</p>
-                            <p class="module-analogy"><em>Like fill-in-the-blanks for official documents</em></p>
                         </div>
                     </div>
                 </div>
@@ -80,17 +79,18 @@
                 <div class="section-header">
                     <h2>Gyan - Legal Knowledge Assistant</h2>
                     <p>Ask questions in plain Bengali or English. Get simple answers from actual Bangladeshi laws.</p>
-                    <div class="law-coverage">
-                        <p><strong>Current Legal Coverage:</strong> Consumer Rights Protection Act 2009 | Premises Rent
-                            Act 1991 | Digital Security Act 2018 | Right to Information Act 2009 | Penal Code 1860</p>
-                    </div>
                 </div>
                 <div class="chatbot-container">
                     <div class="chat-messages" id="chatMessages">
                         <div class="chat-message bot-message">
                             <div class="message-content">
                                 <p>Hello! I'm your legal assistant powered by actual Bangladeshi laws. Ask me about your
-                                    rights and I'll provide simple, sourced answers.</p>
+                                    rights and I'll provide simple, sourced answers. <br>
+                                    <b>Legal Coverage: </b> Consumer Rights Protection Act 2009, Right to Information
+                                    Act 2009, Penal Code 1860, Premises Rent Control Act 1991, Family Courts Ordinance
+                                    2023, and Road Transport Act 2018 — plus essential public services (passport, birth
+                                    certificate, trade license).
+                                </p>
                                 <div class="suggested-questions">
                                     <p><strong>Try asking about common issues:</strong></p>
                                     <button class="suggestion-btn"
@@ -106,8 +106,12 @@
                                         How do I get information from a government office?
                                     </button>
                                     <button class="suggestion-btn"
-                                        onclick="askQuestion('Someone is harassing me online, what can I do?')">
-                                        Someone is harassing me online, what can I do?
+                                        onclick="askQuestion('How do I request information under the Right to Information Act 2009?')">
+                                        How to request information under RTI 2009
+                                    </button>
+                                    <button class="suggestion-btn"
+                                        onclick="askQuestion('We have a family dispute—what court hears maintenance or custody matters?')">
+                                        Which court hears family disputes?
                                     </button>
                                 </div>
                             </div>
@@ -127,8 +131,8 @@
             <div class="container">
                 <div class="section-header">
                     <h2>Sheba - Government Process Wiki</h2>
-                    <p>Crowdsourced step-by-step guides for government services with required documents, fees, and
-                        office locations</p>
+                    <p>Crowdsourced step-by-step guides for essential services (passport, birth certificate,
+                        trade license) and legal processes.</p>
                 </div>
                 <div class="guides-container" id="guidesContainer">
                     <!-- Guide list will be populated by JavaScript -->
@@ -145,6 +149,21 @@
                 <div class="section-header">
                     <h2>Protirodh - Smart Document Generator</h2>
                     <p>Generate professional drafts of official documents by answering simple questions</p>
+                </div>
+                <div class="protirodh-intro" style="margin-bottom: 1rem;">
+                    <h3 style="margin-bottom: .5rem;">What you can create</h3>
+                    <ul style="margin-left: 1.2rem;">
+                        <li>General Diary (GD) for financial disputes or incidents</li>
+                        <li>Consumer Complaint Letter for defective products/poor service</li>
+                        <li>Government Service Application (e.g., birth certificate, passport, trade license)</li>
+                        <li>Right to Information (RTI) Application under the RTI Act 2009</li>
+                    </ul>
+                    <h3 style="margin: 1rem 0 .5rem;">How it works</h3>
+                    <ol style="margin-left: 1.2rem;">
+                        <li>Select a document type below</li>
+                        <li>Fill out the short form with your details</li>
+                        <li>Preview the generated draft and copy it for printing or editing</li>
+                    </ol>
                 </div>
                 <div class="document-generator">
                     <div class="generator-options" id="generatorOptions">

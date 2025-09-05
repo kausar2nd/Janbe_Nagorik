@@ -4,9 +4,11 @@
 
 This is a fully functional interactive prototype for the "Janbe Nagorik" civic empowerment web application. The prototype demonstrates the complete user journey from asking legal questions to generating actionable documents.
 
+Scope note (CivicTech25 prototype): The content is focused on six areas of Bangladeshi law — Tenancy (Premises Rent Act), Consumer Rights (2009), Right to Information (2009), Penal Code (fraud/cheating), Family Courts (prototype), and Road Transport (prototype) — plus essential public services (passport, birth certificate, trade license).
+
 ## Project Structure
 
-```
+```text
 ├── index.html          # Main HTML file
 ├── styles.css          # All styling
 ├── app.js             # Main JavaScript application
@@ -42,10 +44,11 @@ This is a fully functional interactive prototype for the "Janbe Nagorik" civic e
 - "My landlord refuses to return my security deposit" ✅ (Premises Rent Act 1991)
 - "I bought a defective product, what are my rights?" ✅ (Consumer Rights Protection Act 2009)
 - "How do I get information from a government office?" ✅ (Right to Information Act 2009)
-- "Someone is harassing me online, what can I do?" ✅ (Digital Security Act 2018)
 - "Someone cheated me financially, what legal action can I take?" ✅ (Penal Code 1860)
 - "What are my rights as a tenant?" ✅ (Premises Rent Act 1991)
 - "How do I file a complaint with consumer protection?" ✅ (Consumer Rights Protection Act 2009)
+- "How do I pursue maintenance/child custody in Family Court?" ✅ (Family Courts – prototype overview)
+- "I received a traffic fine — what should I do?" ✅ (Road Transport Act – prototype basics)
 - "Can police refuse to file my complaint?" ✅ (Criminal Procedure Code 1898)
 
 **How to test:**
@@ -62,10 +65,11 @@ This is a fully functional interactive prototype for the "Janbe Nagorik" civic e
 2. **Filing a Consumer Complaint** (Consumer Rights - Consumer Protection Act 2009)
 3. **Filing a Police Complaint** (Legal - Criminal Procedure)
 4. **Filing an RTI Application** (Government Transparency - RTI Act 2009)
-5. **Reporting Cybercrime** (Digital Rights - Digital Security Act 2018)
+5. **Family Court Basics (Prototype)** (Family Courts – demo content)
 6. **Obtaining a Birth Certificate** (Government Services)
 7. **Applying for a Passport** (Government Services)
 8. **Getting a Trade License** (Business Services)
+9. **Road Transport Basics (Prototype)** (Road Transport – demo content)
 
 **How to test:**
 
@@ -131,7 +135,7 @@ This is a fully functional interactive prototype for the "Janbe Nagorik" civic e
 
 ### Design Elements
 
-- **Professional color scheme** (blue/gray palette)
+- **Brand color scheme** (Green #005C41, Gold #FFC20E, Red #86341C)
 - **Clean typography** with proper hierarchy
 - **Card-based layouts** for easy scanning
 - **Consistent spacing** and alignment

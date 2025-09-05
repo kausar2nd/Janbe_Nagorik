@@ -2,57 +2,79 @@
     {
         "id": 1,
         "question": "My landlord refuses to return my security deposit",
-        "answer": "According to the Premises Rent Act 1991, your landlord cannot arbitrarily keep your security deposit. The deposit must be returned when you vacate the premises, minus legitimate deductions for damages beyond normal wear and tear. Section 13 of the Act provides protection against illegal retention of deposits. If your landlord refuses without valid reasons, you have the right to file a complaint.",
-        "actionText": "Next: Learn how to file a complaint",
+        "answer": "Your landlord cannot legally withhold your security deposit without valid reasons. Under Bangladeshi rental law, you're entitled to the full return of your deposit when you vacate the property, minus only legitimate deductions for actual damages beyond normal wear and tear. Your landlord must provide written justification and receipts for any deductions. If they refuse to return your deposit or cannot justify the deductions, this constitutes illegal retention of tenant funds and you have legal recourse including filing a General Diary with police and pursuing civil remedies.",
+        "sources": [
+            "Premises Rent Control Act 1991, Section 13 - Protection of tenant deposits",
+            "Premises Rent Control Act 1991, Section 11 - Landlord obligations",
+            "Code of Civil Procedure 1908, Order XXXVII - Summary procedure for recovery of money",
+            "Penal Code 1860, Section 406 - Criminal breach of trust"
+        ],
+        "actionText": "Want to learn how to file a General Diary for deposit recovery?",
         "actionTarget": "gd-financial-dispute"
     },
     {
         "id": 2,
         "question": "I bought a defective product, what are my rights?",
-        "answer": "Under the Consumer Rights Protection Act 2009, you have comprehensive rights: 1) Right to receive goods as promised (Section 3), 2) Right to accurate product information (Section 4), 3) Protection from unfair trade practices (Section 5), 4) Right to compensation for defective products (Section 6). You can seek remedy through replacement, refund, or compensation. The Act establishes consumer courts for dispute resolution.",
-        "actionText": "Next: Learn how to file a consumer complaint",
+        "answer": "As a consumer, you have strong legal protections against defective products. You have the right to receive goods that match their description, work as promised, and are safe for use. When you purchase a defective product, you're entitled to a replacement, full refund, or compensation for damages. The seller cannot refuse these remedies by claiming 'no returns' or similar policies - such practices violate consumer protection law. You also have the right to accurate information about products before purchase, and protection from misleading advertising or unfair trade practices.",
+        "sources": [
+            "Consumer Rights Protection Act 2009, Section 3 - Fundamental consumer rights",
+            "Consumer Rights Protection Act 2009, Section 6 - Remedies for defective goods",
+            "Consumer Rights Protection Act 2009, Section 18 - Prohibition of unfair trade practices",
+            "Consumer Rights Protection Act 2009, Section 25 - Compensation procedures"
+        ],
+        "actionText": "Want to learn how to file an effective consumer complaint?",
         "actionTarget": "consumer-complaint"
     },
     {
         "id": 3,
         "question": "How do I get information from a government office?",
-        "answer": "The Right to Information Act 2009 gives you the legal right to access government information. Under Section 4, every citizen can request information from public authorities. You must submit a written application with a nominal fee. The authority must respond within 20 working days (Section 9). If denied, you can appeal to the Information Commission.",
-        "actionText": "Next: Generate an RTI application",
+        "answer": "You have a fundamental legal right to access government information under the Right to Information Act. Any citizen can request information from government offices, and they are legally required to respond within 20 working days. You only need to pay a nominal fee (2 taka per page), and the request can be made in writing or sometimes verbally. The government cannot refuse information unless it falls under specific exemptions like national security or personal privacy. If your request is denied or ignored, you can appeal to the Information Commission at no cost.",
+        "sources": [
+            "Right to Information Act 2009, Section 4 - Right to information",
+            "Right to Information Act 2009, Section 9 - Time limit for providing information",
+            "Right to Information Act 2009, Section 8 - Exempted information",
+            "Right to Information Act 2009, Section 23 - Appeal to Information Commission"
+        ],
+        "actionText": "Want to learn how to draft a proper RTI application?",
         "actionTarget": "rti-application"
     },
     {
         "id": 4,
-        "question": "Someone is harassing me online, what can I do?",
-        "answer": "The Digital Security Act 2018 provides protection against online harassment. Section 25 covers identity theft, Section 29 covers publication of defamatory information, and Section 31 covers deterioration of law and order through digital means. You can file a complaint with the nearest police station or directly with the Cyber Tribunal. Keep screenshots and evidence of the harassment.",
-        "actionText": "Next: Learn how to report cybercrime",
-        "actionTarget": "cybercrime-complaint"
+        "question": "Someone cheated me financially, what legal action can I take?",
+        "answer": "Financial cheating is a serious criminal offense with severe penalties. If someone has defrauded you through false promises, forged documents, or dishonest schemes, you can pursue both criminal and civil remedies. Criminal charges can result in imprisonment up to 7 years for the perpetrator, while civil action can help you recover your money plus damages. You should preserve all evidence including contracts, receipts, communications, and witness statements. Time is critical - file your complaint promptly as delays can weaken your case and some evidence may be lost.",
+        "sources": [
+            "Penal Code 1860, Section 420 - Cheating and dishonestly inducing delivery of property",
+            "Penal Code 1860, Section 406 - Criminal breach of trust",
+            "Code of Criminal Procedure 1898, Section 154 - Information in cognizable cases",
+            "Limitation Act 1908 - Time limits for legal action"
+        ],
+        "actionText": "Want to learn how to file a strong police complaint for fraud?",
+        "actionTarget": "police-complaint"
     },
     {
         "id": 5,
-        "question": "Someone cheated me financially, what legal action can I take?",
-        "answer": "Under Section 420 of the Penal Code 1860, cheating is a criminal offense punishable by imprisonment up to 7 years and fine. If someone dishonestly induced you to deliver property or make/alter a valuable security, you can file an FIR. For criminal breach of trust (Section 406), the punishment is up to 3 years imprisonment. Gather all evidence including documents, communications, and witness statements.",
-        "actionText": "Next: File a police complaint",
-        "actionTarget": "police-complaint"
+        "question": "We have a family dispute (maintenance/divorce/child custody). What court handles this?",
+        "answer": "Family disputes including divorce, maintenance, child custody, and dower claims are handled by specialized Family Courts established under the Family Courts Ordinance. These courts have exclusive jurisdiction over matrimonial and family matters, providing a more focused and sensitive approach than general civil courts. You can file a suit by submitting a plaint with the required court fee and supporting documents. Family Courts also have provisions for mediation and counseling to help resolve disputes amicably when possible.",
+        "sources": [
+            "Family Courts Ordinance 2023, Section 5 - Jurisdiction of Family Courts",
+            "Family Courts Ordinance 2023, Section 7 - Procedure for filing suits",
+            "Family Courts Ordinance 2023, Section 13 - Maintenance orders",
+            "Muslim Family Laws Ordinance 1961 - Marriage and divorce procedures"
+        ],
+        "actionText": "Want to learn how to prepare a family court application?",
+        "actionTarget": "family-court-overview"
     },
     {
         "id": 6,
-        "question": "What are my rights as a tenant?",
-        "answer": "The Premises Rent Act 1991 protects tenant rights: 1) Right to peaceful enjoyment (Section 3), 2) Protection from arbitrary rent increases (Section 6), 3) Right to proper notice before eviction (Section 11), 4) Protection from illegal entry by landlord (Section 12). Your landlord cannot evict you without following proper legal procedures and giving adequate notice.",
-        "actionText": "Next: Learn about tenant complaint procedures",
-        "actionTarget": "tenant-dispute"
-    },
-    {
-        "id": 7,
-        "question": "How do I file a complaint with consumer protection?",
-        "answer": "Under the Consumer Rights Protection Act 2009, you can file complaints with: 1) District Consumer Rights Protection Officer (for local issues), 2) Directorate of National Consumer Rights Protection (for serious violations), 3) Mobile Court (for immediate action). You need purchase receipt, product details, and description of the problem. The complaint can be filed within 3 years of the incident.",
-        "actionText": "Next: Generate a consumer complaint letter",
-        "actionTarget": "complaint"
-    },
-    {
-        "id": 8,
-        "question": "Can police refuse to file my complaint?",
-        "answer": "Police cannot refuse to file your complaint if it relates to a cognizable offense under the Code of Criminal Procedure 1898. For cognizable offenses (serious crimes), they must register an FIR immediately. For non-cognizable offenses, they should file a General Diary. If they refuse, you can approach the Superintendent of Police or file a complaint with higher authorities as per legal procedures.",
-        "actionText": "Next: Learn the complaint filing process",
-        "actionTarget": "police-complaint"
+        "question": "I was fined in a traffic case—what should I know?",
+        "answer": "Traffic violations under the Road Transport Act carry specific penalties, and you have rights during the enforcement process. Police must provide you with a proper ticket showing the violation, fine amount, and payment instructions. You have the right to contest unfair or incorrect fines through proper legal channels. Always keep your driving license, vehicle registration, and insurance documents current to avoid penalties. When paying fines, use only official payment methods and keep receipts as proof of payment.",
+        "sources": [
+            "Road Transport Act 2018, Section 96 - Traffic offenses and penalties",
+            "Road Transport Act 2018, Section 98 - Powers of traffic police",
+            "Road Transport Act 2018, Section 100 - Appeal procedures for traffic violations",
+            "Motor Vehicle Ordinance 1983 - Vehicle registration and licensing requirements"
+        ],
+        "actionText": "Want to learn how to handle traffic disputes or appeals?",
+        "actionTarget": "road-transport-basics"
     }
 ]
