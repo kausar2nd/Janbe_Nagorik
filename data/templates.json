@@ -1,0 +1,212 @@
+{
+    "gd": {
+        "title": "General Diary Application",
+        "fields": [
+            {
+                "name": "applicantName",
+                "label": "Your Full Name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "fatherName",
+                "label": "Father's Name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "address",
+                "label": "Your Address",
+                "type": "textarea",
+                "required": true
+            },
+            {
+                "name": "phone",
+                "label": "Phone Number",
+                "type": "tel",
+                "required": true
+            },
+            {
+                "name": "nid",
+                "label": "National ID Number",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "respondentName",
+                "label": "Name of Person/Organization You're Complaining About",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "respondentAddress",
+                "label": "Their Address (if known)",
+                "type": "textarea",
+                "required": false
+            },
+            {
+                "name": "incidentDate",
+                "label": "Date of Incident",
+                "type": "date",
+                "required": true
+            },
+            {
+                "name": "amount",
+                "label": "Amount Involved (if applicable)",
+                "type": "number",
+                "required": false
+            },
+            {
+                "name": "details",
+                "label": "Detailed Description of the Issue",
+                "type": "textarea",
+                "required": true
+            }
+        ],
+        "template": "To,\nThe Officer-in-Charge\n{stationName} Police Station\n\nSubject: Application for General Diary\n\nSir,\n\nI, {applicantName}, son/daughter of {fatherName}, residing at {address}, would like to file a General Diary regarding the following matter:\n\nComplainant Details:\nName: {applicantName}\nFather's Name: {fatherName}\nAddress: {address}\nPhone: {phone}\nNational ID: {nid}\n\nRespondent Details:\nName: {respondentName}\nAddress: {respondentAddress}\n\nIncident Details:\nDate of Incident: {incidentDate}\nAmount Involved: {amount} Taka (if applicable)\n\nDescription of the Matter:\n{details}\n\nI request you to kindly register this application as a General Diary and provide me with a copy for my records.\n\nThank you for your cooperation.\n\nYours faithfully,\n\n{applicantName}\nDate: {currentDate}\nPhone: {phone}"
+    },
+    "complaint": {
+        "title": "Complaint Letter",
+        "fields": [
+            {
+                "name": "applicantName",
+                "label": "Your Full Name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "address",
+                "label": "Your Address",
+                "type": "textarea",
+                "required": true
+            },
+            {
+                "name": "phone",
+                "label": "Phone Number",
+                "type": "tel",
+                "required": true
+            },
+            {
+                "name": "email",
+                "label": "Email Address",
+                "type": "email",
+                "required": false
+            },
+            {
+                "name": "organizationName",
+                "label": "Organization/Person You're Complaining Against",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "organizationAddress",
+                "label": "Their Address",
+                "type": "textarea",
+                "required": false
+            },
+            {
+                "name": "issueType",
+                "label": "Type of Issue",
+                "type": "select",
+                "options": [
+                    "Product Defect",
+                    "Poor Service",
+                    "Financial Dispute",
+                    "Other"
+                ],
+                "required": true
+            },
+            {
+                "name": "incidentDate",
+                "label": "Date of Incident/Purchase",
+                "type": "date",
+                "required": true
+            },
+            {
+                "name": "amount",
+                "label": "Financial Loss Amount",
+                "type": "number",
+                "required": false
+            },
+            {
+                "name": "details",
+                "label": "Detailed Description of the Problem",
+                "type": "textarea",
+                "required": true
+            },
+            {
+                "name": "resolution",
+                "label": "What Resolution Do You Want?",
+                "type": "textarea",
+                "required": true
+            }
+        ],
+        "template": "To,\nThe Concerned Authority\n{organizationName}\n{organizationAddress}\n\nSubject: Formal Complaint Regarding {issueType}\n\nDear Sir/Madam,\n\nI am writing to formally lodge a complaint regarding the following matter:\n\nComplainant Information:\nName: {applicantName}\nAddress: {address}\nPhone: {phone}\nEmail: {email}\n\nComplaint Details:\nType of Issue: {issueType}\nDate of Incident/Purchase: {incidentDate}\nFinancial Loss: {amount} Taka (if applicable)\n\nDescription of the Problem:\n{details}\n\nRequested Resolution:\n{resolution}\n\nI have attempted to resolve this matter directly but have not received a satisfactory response. I request your immediate attention to this matter and a prompt resolution.\n\nI look forward to your response within 15 working days of receiving this complaint.\n\nThank you for your cooperation.\n\nYours sincerely,\n\n{applicantName}\nDate: {currentDate}\nPhone: {phone}\nEmail: {email}"
+    },
+    "application": {
+        "title": "Government Service Application",
+        "fields": [
+            {
+                "name": "applicantName",
+                "label": "Your Full Name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "fatherName",
+                "label": "Father's Name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "address",
+                "label": "Your Address",
+                "type": "textarea",
+                "required": true
+            },
+            {
+                "name": "phone",
+                "label": "Phone Number",
+                "type": "tel",
+                "required": true
+            },
+            {
+                "name": "nid",
+                "label": "National ID Number",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "serviceType",
+                "label": "Type of Service Requested",
+                "type": "select",
+                "options": [
+                    "Birth Certificate",
+                    "Death Certificate",
+                    "Trade License",
+                    "Passport",
+                    "Other"
+                ],
+                "required": true
+            },
+            {
+                "name": "purpose",
+                "label": "Purpose of Application",
+                "type": "textarea",
+                "required": true
+            },
+            {
+                "name": "urgency",
+                "label": "Urgency Level",
+                "type": "select",
+                "options": [
+                    "Normal",
+                    "Urgent",
+                    "Emergency"
+                ],
+                "required": true
+            }
+        ],
+        "template": "To,\nThe {officeName}\n{officeAddress}\n\nSubject: Application for {serviceType}\n\nSir/Madam,\n\nI respectfully submit this application for {serviceType} with the following details:\n\nApplicant Information:\nName: {applicantName}\nFather's Name: {fatherName}\nAddress: {address}\nPhone: {phone}\nNational ID: {nid}\n\nService Details:\nType of Service: {serviceType}\nPurpose: {purpose}\nUrgency: {urgency}\n\nI have attached all required documents as per your guidelines. I request you to kindly process my application and issue the requested {serviceType} at your earliest convenience.\n\nThank you for your cooperation.\n\nYours faithfully,\n\n{applicantName}\nDate: {currentDate}\nPhone: {phone}\nNID: {nid}"
+    }
+}

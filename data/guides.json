@@ -1,0 +1,178 @@
+[
+    {
+        "id": "gd-financial-dispute",
+        "title": "Filing a General Diary for Financial Disputes",
+        "description": "Step-by-step guide to file a GD when someone owes you money or refuses to return your deposit",
+        "category": "Legal",
+        "steps": [
+            {
+                "title": "Gather Required Documents",
+                "description": "Collect your rental agreement, deposit receipt, any written communication with landlord, and your National ID card."
+            },
+            {
+                "title": "Visit the Police Station",
+                "description": "Go to the police station in the area where the dispute occurred. You can file a GD at any time during office hours."
+            },
+            {
+                "title": "Request GD Form",
+                "description": "Ask the duty officer for a General Diary form. Explain that you want to file a complaint about a financial dispute."
+            },
+            {
+                "title": "Fill Out the Form",
+                "description": "Provide complete details: your information, landlord's information, incident details, amount involved, and timeline of events."
+            },
+            {
+                "title": "Submit and Get Receipt",
+                "description": "Submit the form and ensure you get a copy with the GD number and official stamp. Keep this safe as proof of filing."
+            }
+        ],
+        "actionText": "Generate a GD Draft",
+        "actionTarget": "gd"
+    },
+    {
+        "id": "consumer-complaint",
+        "title": "Filing a Consumer Complaint",
+        "description": "How to file a complaint for defective products or poor services",
+        "category": "Consumer Rights",
+        "steps": [
+            {
+                "title": "Collect Evidence",
+                "description": "Gather purchase receipts, product photos, warranty cards, and any communication with the seller."
+            },
+            {
+                "title": "Contact the Seller First",
+                "description": "Try to resolve the issue directly with the seller or service provider. Keep records of these attempts."
+            },
+            {
+                "title": "Visit Consumer Affairs Office",
+                "description": "If direct contact fails, visit your local Consumer Affairs office or the National Consumer Rights Protection office."
+            },
+            {
+                "title": "File Written Complaint",
+                "description": "Submit a written complaint with all supporting documents. Include timeline, financial loss, and desired resolution."
+            }
+        ],
+        "actionText": "Generate a Complaint Letter",
+        "actionTarget": "complaint"
+    },
+    {
+        "id": "police-complaint",
+        "title": "Filing a Police Complaint",
+        "description": "General guide for filing police complaints and FIRs",
+        "category": "Legal",
+        "steps": [
+            {
+                "title": "Determine Complaint Type",
+                "description": "Decide if your issue requires an FIR (for serious crimes) or a General Diary (for other issues)."
+            },
+            {
+                "title": "Prepare Your Statement",
+                "description": "Write down all details: what happened, when, where, who was involved, and any witnesses."
+            },
+            {
+                "title": "Visit Police Station",
+                "description": "Go to the police station with jurisdiction over the area where the incident occurred."
+            },
+            {
+                "title": "File the Complaint",
+                "description": "Provide your statement to the duty officer. For FIRs, police must register immediately for cognizable offenses."
+            },
+            {
+                "title": "Get Documentation",
+                "description": "Ensure you receive a copy of your complaint with case/GD number and officer's signature."
+            }
+        ],
+        "actionText": "Generate a Complaint Draft",
+        "actionTarget": "complaint"
+    },
+    {
+        "id": "birth-certificate",
+        "title": "Obtaining a Birth Certificate",
+        "description": "Complete guide to get your birth certificate from government offices",
+        "category": "Government Services",
+        "steps": [
+            {
+                "title": "Determine the Right Office",
+                "description": "Visit the Registrar office of the area where you were born, or your local Union Parishad."
+            },
+            {
+                "title": "Collect Required Documents",
+                "description": "Bring hospital birth certificate, school admission certificate, parents' ID cards, and recent passport-size photos."
+            },
+            {
+                "title": "Fill Application Form",
+                "description": "Complete the birth registration application form with accurate information. Double-check all details."
+            },
+            {
+                "title": "Pay Fees",
+                "description": "Pay the prescribed government fee. Keep the receipt as proof of payment."
+            },
+            {
+                "title": "Submit and Track",
+                "description": "Submit your application and get a receipt with application number. Use this to track your application status."
+            }
+        ],
+        "actionText": "Generate an Application",
+        "actionTarget": "application"
+    },
+    {
+        "id": "passport-application",
+        "title": "Applying for a Passport",
+        "description": "Step-by-step process to apply for a Bangladeshi passport",
+        "category": "Government Services",
+        "steps": [
+            {
+                "title": "Online Pre-Application",
+                "description": "Visit the official passport website and fill out the online application form. Print the confirmation page."
+            },
+            {
+                "title": "Prepare Documents",
+                "description": "Gather birth certificate, National ID, photographs, and other required documents as per the checklist."
+            },
+            {
+                "title": "Visit Passport Office",
+                "description": "Go to your designated passport office with all documents and the printed application form."
+            },
+            {
+                "title": "Verification and Payment",
+                "description": "Complete the verification process, pay fees, and provide biometric data (fingerprints and photo)."
+            },
+            {
+                "title": "Collection",
+                "description": "Wait for the specified time and collect your passport on the given date with the receipt."
+            }
+        ],
+        "actionText": "Generate an Application",
+        "actionTarget": "application"
+    },
+    {
+        "id": "trade-license",
+        "title": "Getting a Trade License",
+        "description": "How to obtain a trade license for your business",
+        "category": "Business",
+        "steps": [
+            {
+                "title": "Choose License Type",
+                "description": "Determine what type of trade license you need based on your business category and location."
+            },
+            {
+                "title": "Prepare Business Documents",
+                "description": "Gather business registration papers, owner's NID, business address proof, and bank statements."
+            },
+            {
+                "title": "Visit City Corporation/Municipality",
+                "description": "Go to your local City Corporation or Municipality office with all required documents."
+            },
+            {
+                "title": "Application and Inspection",
+                "description": "Submit application with fees. Officials may inspect your business location."
+            },
+            {
+                "title": "License Issuance",
+                "description": "After verification and approval, collect your trade license certificate."
+            }
+        ],
+        "actionText": "Generate an Application",
+        "actionTarget": "application"
+    }
+]
