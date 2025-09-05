@@ -37,16 +37,16 @@ This is a fully functional interactive prototype for the "Janbe Nagorik" civic e
 
 ### 3. Gyan Module (Legal Chatbot) - Test Questions
 
-**Questions the chatbot can answer:**
+**Questions the chatbot can answer (based on specific Bangladeshi laws):**
 
-- "Can my landlord keep my security deposit?" ✅ (Links to GD guide)
-- "What are my consumer rights?" ✅ (Links to consumer complaint)
-- "How do I file a police complaint?" ✅ (Links to police guide)
-- "What should I do if I bought a defective product?" ✅
-- "Can police refuse to file my complaint?" ✅
-- "What are my rights as a tenant?" ✅
-- "How do I get a birth certificate?" ✅
-- "What can I do about workplace harassment?" ✅
+- "My landlord refuses to return my security deposit" ✅ (Premises Rent Act 1991)
+- "I bought a defective product, what are my rights?" ✅ (Consumer Rights Protection Act 2009)
+- "How do I get information from a government office?" ✅ (Right to Information Act 2009)
+- "Someone is harassing me online, what can I do?" ✅ (Digital Security Act 2018)
+- "Someone cheated me financially, what legal action can I take?" ✅ (Penal Code 1860)
+- "What are my rights as a tenant?" ✅ (Premises Rent Act 1991)
+- "How do I file a complaint with consumer protection?" ✅ (Consumer Rights Protection Act 2009)
+- "Can police refuse to file my complaint?" ✅ (Criminal Procedure Code 1898)
 
 **How to test:**
 
@@ -58,12 +58,14 @@ This is a fully functional interactive prototype for the "Janbe Nagorik" civic e
 
 **Available guides:**
 
-1. **Filing a General Diary for Financial Disputes** (Legal)
-2. **Filing a Consumer Complaint** (Consumer Rights)
-3. **Filing a Police Complaint** (Legal)
-4. **Obtaining a Birth Certificate** (Government Services)
-5. **Applying for a Passport** (Government Services)
-6. **Getting a Trade License** (Business)
+1. **Filing a General Diary for Financial Disputes** (Legal - Premises Rent Act)
+2. **Filing a Consumer Complaint** (Consumer Rights - Consumer Protection Act 2009)
+3. **Filing a Police Complaint** (Legal - Criminal Procedure)
+4. **Filing an RTI Application** (Government Transparency - RTI Act 2009)
+5. **Reporting Cybercrime** (Digital Rights - Digital Security Act 2018)
+6. **Obtaining a Birth Certificate** (Government Services)
+7. **Applying for a Passport** (Government Services)
+8. **Getting a Trade License** (Business Services)
 
 **How to test:**
 
@@ -75,9 +77,10 @@ This is a fully functional interactive prototype for the "Janbe Nagorik" civic e
 
 **Available document types:**
 
-1. **General Diary (GD)** - For filing police complaints
-2. **Complaint Letter** - For consumer/service complaints
-3. **Government Application** - For government services
+1. **General Diary (GD)** - For filing police complaints (financial disputes, etc.)
+2. **Complaint Letter** - For consumer/service complaints to authorities
+3. **Government Application** - For various government services
+4. **RTI Application** - For requesting government information under RTI Act 2009
 
 **Test inputs for GD form:**
 

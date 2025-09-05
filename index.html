@@ -14,10 +14,12 @@
     <!-- Navigation Header -->
     <header class="navbar">
         <div class="container">
-            <div class="nav-brand">
-                <h1>জানবে নাগরিক</h1>
-                <p>Janbe Nagorik</p>
-            </div>
+            <a href="#home">
+                <div class="nav-brand">
+                    <h1>জানবে নাগরিক</h1>
+                    <p>Janbe Nagorik</p>
+                </div>
+            </a>
             <nav class="nav-menu">
                 <a href="#home" class="nav-link active" data-section="home">Home</a>
                 <a href="#gyan" class="nav-link" data-section="gyan">Gyan</a>
@@ -33,26 +35,39 @@
         <section id="home" class="section active">
             <div class="container">
                 <div class="hero">
-                    <h1>Empower Yourself as a Citizen</h1>
-                    <p>Know your rights, access government services, and take action when needed.</p>
+                    <h1>Break the Cycle of Confusion and Helplessness</h1>
+                    <p>From not knowing your rights to taking confident action - Janbe Nagorik guides you through every
+                        step of civic empowerment.</p>
+                    <div class="problem-statement">
+                        <p><strong>Facing a problem?</strong> Illegal charges, security deposit disputes, consumer
+                            fraud? Don't stay helpless. Get the knowledge, process guidance, and action tools you need.
+                        </p>
+                    </div>
                     <div class="hero-modules">
                         <div class="module-card" onclick="showSection('gyan')">
                             <div class="module-icon">🎓</div>
                             <h3>Gyan</h3>
-                            <p>Know Your Rights</p>
-                            <p class="module-desc">Ask questions about Bangladeshi laws and get instant answers</p>
+                            <p>Legal Knowledge Assistant</p>
+                            <p class="module-desc">Ask legal questions in plain Bengali or English. Get simple answers
+                                from actual Bangladeshi laws with sources cited.</p>
+                            <p class="module-analogy"><em>Like Google Search, but specifically for Bangladeshi laws</em>
+                            </p>
                         </div>
                         <div class="module-card" onclick="showSection('sheba')">
                             <div class="module-icon">📋</div>
                             <h3>Sheba</h3>
-                            <p>Service Guides</p>
-                            <p class="module-desc">Step-by-step guides for government services</p>
+                            <p>Government Process Wiki</p>
+                            <p class="module-desc">Step-by-step guides for government services with required documents,
+                                fees, and office locations.</p>
+                            <p class="module-analogy"><em>Like a recipe book for dealing with the government</em></p>
                         </div>
                         <div class="module-card" onclick="showSection('protirodh')">
                             <div class="module-icon">⚖️</div>
                             <h3>Protirodh</h3>
-                            <p>Take Action</p>
-                            <p class="module-desc">Generate legal documents and complaint letters</p>
+                            <p>Smart Document Generator</p>
+                            <p class="module-desc">Generate professional drafts of official documents by answering
+                                simple questions.</p>
+                            <p class="module-analogy"><em>Like fill-in-the-blanks for official documents</em></p>
                         </div>
                     </div>
                 </div>
@@ -63,27 +78,36 @@
         <section id="gyan" class="section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Gyan - Know Your Rights</h2>
-                    <p>Ask questions about Bangladeshi laws and get instant answers</p>
+                    <h2>Gyan - Legal Knowledge Assistant</h2>
+                    <p>Ask questions in plain Bengali or English. Get simple answers from actual Bangladeshi laws.</p>
+                    <div class="law-coverage">
+                        <p><strong>Current Legal Coverage:</strong> Consumer Rights Protection Act 2009 | Premises Rent
+                            Act 1991 | Digital Security Act 2018 | Right to Information Act 2009 | Penal Code 1860</p>
+                    </div>
                 </div>
                 <div class="chatbot-container">
                     <div class="chat-messages" id="chatMessages">
                         <div class="chat-message bot-message">
                             <div class="message-content">
-                                <p>Hello! I'm your legal assistant. Ask me about your rights under Bangladeshi law.</p>
+                                <p>Hello! I'm your legal assistant powered by actual Bangladeshi laws. Ask me about your
+                                    rights and I'll provide simple, sourced answers.</p>
                                 <div class="suggested-questions">
-                                    <p><strong>Try asking:</strong></p>
+                                    <p><strong>Try asking about common issues:</strong></p>
                                     <button class="suggestion-btn"
-                                        onclick="askQuestion('Can my landlord keep my security deposit?')">
-                                        Can my landlord keep my security deposit?
+                                        onclick="askQuestion('My landlord refuses to return my security deposit')">
+                                        My landlord won't return my security deposit
                                     </button>
                                     <button class="suggestion-btn"
-                                        onclick="askQuestion('What are my consumer rights?')">
-                                        What are my consumer rights?
+                                        onclick="askQuestion('I bought a defective product, what are my rights?')">
+                                        I bought a defective product, what are my rights?
                                     </button>
                                     <button class="suggestion-btn"
-                                        onclick="askQuestion('How do I file a police complaint?')">
-                                        How do I file a police complaint?
+                                        onclick="askQuestion('How do I get information from a government office?')">
+                                        How do I get information from a government office?
+                                    </button>
+                                    <button class="suggestion-btn"
+                                        onclick="askQuestion('Someone is harassing me online, what can I do?')">
+                                        Someone is harassing me online, what can I do?
                                     </button>
                                 </div>
                             </div>
@@ -102,8 +126,9 @@
         <section id="sheba" class="section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Sheba - Service Guides</h2>
-                    <p>Step-by-step guides for government services</p>
+                    <h2>Sheba - Government Process Wiki</h2>
+                    <p>Crowdsourced step-by-step guides for government services with required documents, fees, and
+                        office locations</p>
                 </div>
                 <div class="guides-container" id="guidesContainer">
                     <!-- Guide list will be populated by JavaScript -->
@@ -118,8 +143,8 @@
         <section id="protirodh" class="section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Protirodh - Take Action</h2>
-                    <p>Generate legal documents and complaint letters</p>
+                    <h2>Protirodh - Smart Document Generator</h2>
+                    <p>Generate professional drafts of official documents by answering simple questions</p>
                 </div>
                 <div class="document-generator">
                     <div class="generator-options" id="generatorOptions">
@@ -133,6 +158,9 @@
                             </button>
                             <button class="doc-type-btn" onclick="selectDocumentType('application')">
                                 Government Application
+                            </button>
+                            <button class="doc-type-btn" onclick="selectDocumentType('rti')">
+                                RTI Application
                             </button>
                         </div>
                     </div>

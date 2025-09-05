@@ -208,5 +208,65 @@
             }
         ],
         "template": "To,\nThe {officeName}\n{officeAddress}\n\nSubject: Application for {serviceType}\n\nSir/Madam,\n\nI respectfully submit this application for {serviceType} with the following details:\n\nApplicant Information:\nName: {applicantName}\nFather's Name: {fatherName}\nAddress: {address}\nPhone: {phone}\nNational ID: {nid}\n\nService Details:\nType of Service: {serviceType}\nPurpose: {purpose}\nUrgency: {urgency}\n\nI have attached all required documents as per your guidelines. I request you to kindly process my application and issue the requested {serviceType} at your earliest convenience.\n\nThank you for your cooperation.\n\nYours faithfully,\n\n{applicantName}\nDate: {currentDate}\nPhone: {phone}\nNID: {nid}"
+    },
+    "rti": {
+        "title": "Right to Information (RTI) Application",
+        "fields": [
+            {
+                "name": "applicantName",
+                "label": "Your Full Name",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "address",
+                "label": "Your Address",
+                "type": "textarea",
+                "required": true
+            },
+            {
+                "name": "phone",
+                "label": "Phone Number",
+                "type": "tel",
+                "required": true
+            },
+            {
+                "name": "email",
+                "label": "Email Address",
+                "type": "email",
+                "required": false
+            },
+            {
+                "name": "nid",
+                "label": "National ID Number",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "officeName",
+                "label": "Name of Government Office/Department",
+                "type": "text",
+                "required": true
+            },
+            {
+                "name": "informationRequested",
+                "label": "Specific Information You Want",
+                "type": "textarea",
+                "required": true
+            },
+            {
+                "name": "purpose",
+                "label": "Purpose of Information Request (Optional)",
+                "type": "textarea",
+                "required": false
+            },
+            {
+                "name": "timeframe",
+                "label": "Time Period of Information (if applicable)",
+                "type": "text",
+                "required": false
+            }
+        ],
+        "template": "To,\nThe Designated Officer\n{officeName}\n\nSubject: Application for Information under Right to Information Act 2009\n\nSir/Madam,\n\nUnder the Right to Information Act 2009, I request the following information:\n\nApplicant Details:\nName: {applicantName}\nAddress: {address}\nPhone: {phone}\nEmail: {email}\nNational ID: {nid}\n\nInformation Requested:\n{informationRequested}\n\nTime Period: {timeframe}\nPurpose: {purpose}\n\nI am willing to pay the prescribed fee for obtaining this information as per Section 6 of the RTI Act 2009. Please provide the information within 20 working days as mandated by Section 9 of the Act.\n\nIf any part of this information is not available or cannot be provided, please inform me in writing with proper justification as required under the Act.\n\nThank you for your cooperation.\n\nYours faithfully,\n\n{applicantName}\nDate: {currentDate}\nPhone: {phone}\nNID: {nid}\n\nNote: This application is submitted under the Right to Information Act 2009. Fee enclosed: 2 Taka per page (as applicable)"
     }
 }

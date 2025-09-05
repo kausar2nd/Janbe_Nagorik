@@ -321,6 +321,12 @@ function setupEventListeners() {
             showSection(section);
         });
     });
+
+    // Logo click to go home
+    document.querySelector('.nav-brand').addEventListener('click', (e) => {
+        e.preventDefault();
+        showSection('home');
+    });
 }
 
 // Navigation functions
@@ -331,11 +337,73 @@ function showSection(sectionName) {
     });
     document.querySelector(`[data-section="${sectionName}"]`).classList.add('active');
 
-    // Update sections
+    // Get current active section for exit animation
+    const currentActiveSection = document.querySelector('.section.active');
+
+    // Update sections with animations
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
     });
-    document.getElementById(sectionName).classList.add('active');
+
+    const newSection = document.getElementById(sectionName);
+
+    // Add entrance animation to new section
+    newSection.style.animation = 'slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+    newSection.classList.add('active');
+
+    // Animate content elements within the section
+    setTimeout(() => {
+        const moduleCards = newSection.querySelectorAll('.module-card');
+        const guideCards = newSection.querySelectorAll('.guide-card');
+        const docButtons = newSection.querySelectorAll('.doc-type-btn');
+
+        // Stagger animation for module cards
+        moduleCards.forEach((card, index) => {
+            card.style.animation = `slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
+            card.style.animationDelay = `${index * 0.1}s`;
+        });
+
+        // Stagger animation for guide cards
+        guideCards.forEach((card, index) => {
+            card.style.animation = `slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
+            card.style.animationDelay = `${index * 0.08}s`;
+        });
+
+        // Stagger animation for document buttons
+        docButtons.forEach((btn, index) => {
+            btn.style.animation = `scaleIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
+            btn.style.animationDelay = `${index * 0.05}s`;
+        });
+
+        // Animate chat interface if in gyan section
+        if (sectionName === 'gyan') {
+            const chatInterface = newSection.querySelector('.chat-interface');
+            if (chatInterface) {
+                chatInterface.style.animation = 'slideUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+                chatInterface.style.animationDelay = '0.3s';
+            }
+        }
+
+        // Animate forms if in protirodh section
+        if (sectionName === 'protirodh') {
+            // First reset the document generator to ensure clean state
+            resetDocumentGenerator();
+
+            // Then animate the document type buttons
+            const docButtons = newSection.querySelectorAll('.doc-type-btn');
+            docButtons.forEach((btn, index) => {
+                btn.style.opacity = '0';
+                btn.style.animation = `scaleIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
+                btn.style.animationDelay = `${index * 0.05}s`;
+            });
+
+            const forms = newSection.querySelectorAll('.generator-form, .template-form');
+            forms.forEach((form, index) => {
+                form.style.animation = 'slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+                form.style.animationDelay = `${index * 0.1}s`;
+            });
+        }
+    }, 200);
 
     currentSection = sectionName;
 
@@ -345,7 +413,7 @@ function showSection(sectionName) {
     } else if (sectionName === 'sheba') {
         showGuidesList();
     } else if (sectionName === 'protirodh') {
-        resetDocumentGenerator();
+        // Reset is now handled in the animation block above
     }
 }
 
@@ -402,8 +470,35 @@ function addMessage(content, sender, action = null) {
 function findAnswer(question) {
     const lowerQuestion = question.toLowerCase();
 
+    // Check for exact or partial matches with the FAQ database
     for (const faq of faqData) {
-        if (lowerQuestion.includes(faq.question.toLowerCase().split(' ').slice(0, 3).join(' '))) {
+        const faqKeywords = faq.question.toLowerCase();
+
+        // Direct match check
+        if (lowerQuestion.includes(faqKeywords.substring(0, 20)) ||
+            faqKeywords.includes(lowerQuestion.substring(0, 20))) {
+            return {
+                answer: faq.answer,
+                action: faq.actionText ? {
+                    text: faq.actionText,
+                    target: faq.actionTarget
+                } : null
+            };
+        }
+
+        // Keyword-based matching for better coverage
+        const questionWords = lowerQuestion.split(' ');
+        const faqWords = faqKeywords.split(' ');
+        let matchCount = 0;
+
+        for (const word of questionWords) {
+            if (word.length > 3 && faqWords.some(faqWord => faqWord.includes(word) || word.includes(faqWord))) {
+                matchCount++;
+            }
+        }
+
+        // If we have enough matching keywords, consider it a match
+        if (matchCount >= 2) {
             return {
                 answer: faq.answer,
                 action: faq.actionText ? {
@@ -415,12 +510,10 @@ function findAnswer(question) {
     }
 
     return {
-        answer: "I understand your question, but I don't have specific information about that topic in my current knowledge base. Please try asking about tenant rights, consumer protection, or police complaints. You can also browse our Service Guides section for step-by-step instructions on various legal procedures.",
+        answer: "I understand your question, but I don't have specific information about that topic in my current knowledge base. My expertise covers Consumer Rights Protection Act 2009, Premises Rent Act 1991, Digital Security Act 2018, Right to Information Act 2009, and relevant sections of the Penal Code 1860. Please try asking about tenant rights, consumer protection, online harassment, information access, or criminal matters. You can also browse our Service Guides section for step-by-step instructions.",
         action: null
     };
-}
-
-function handleChatAction(target) {
+} function handleChatAction(target) {
     if (target.includes('gd') || target.includes('complaint')) {
         showSection('sheba');
         setTimeout(() => {
@@ -458,41 +551,225 @@ function showGuideDetail(guideId) {
     const container = document.getElementById('guidesContainer');
     const detail = document.getElementById('guideDetail');
 
-    container.style.display = 'none';
-    detail.style.display = 'block';
+    // Add fade out animation to container
+    container.style.animation = 'fadeOut 0.3s ease-out forwards';
 
-    let stepsHtml = '';
-    guide.steps.forEach((step, index) => {
-        stepsHtml += `
-            <div class="step">
-                <h4>Step ${index + 1}: ${step.title}</h4>
-                <p>${step.description}</p>
+    setTimeout(() => {
+        container.style.display = 'none';
+        detail.style.display = 'block';
+        detail.style.animation = 'slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+
+        let stepsHtml = '';
+        guide.steps.forEach((step, index) => {
+            stepsHtml += `
+                <div class="step" style="opacity: 0;">
+                    <h4>Step ${index + 1}: ${step.title}</h4>
+                    <p>${step.description}</p>
+                </div>
+            `;
+        });
+
+        let actionButton = '';
+        if (guide.actionText && guide.actionTarget) {
+            actionButton = `<button class="action-button" onclick="handleGuideAction('${guide.actionTarget}')">${guide.actionText}</button>`;
+        }
+
+        detail.innerHTML = `
+            <button class="back-btn" onclick="showGuidesList()">← Back to Guides</button>
+            <h3>${guide.title}</h3>
+            <p>${guide.description}</p>
+            <div class="guide-steps">
+                ${stepsHtml}
+            </div>
+            <div class="text-center">
+                ${actionButton}
+            </div>
+            <div class="crowdsource-section">
+                <div class="crowdsource-info">
+                    <h4>📝 Help Improve This Guide</h4>
+                    <p>Found something missing or incorrect? Help make this guide better for everyone!</p>
+                </div>
+                <button class="suggest-edit-btn" onclick="showSuggestionForm('${guide.id}')">
+                    ✏️ Suggest an Edit
+                </button>
             </div>
         `;
-    });
 
-    let actionButton = '';
-    if (guide.actionText && guide.actionTarget) {
-        actionButton = `<button class="action-button" onclick="handleGuideAction('${guide.actionTarget}')">${guide.actionText}</button>`;
-    }
+        // Animate steps with stagger
+        setTimeout(() => {
+            const steps = detail.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                step.style.animation = 'slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+                step.style.animationDelay = `${index * 0.1}s`;
+            });
 
-    detail.innerHTML = `
-        <button class="back-btn" onclick="showGuidesList()">← Back to Guides</button>
-        <h3>${guide.title}</h3>
-        <p>${guide.description}</p>
-        <div class="guide-steps">
-            ${stepsHtml}
-        </div>
-        <div class="text-center">
-            ${actionButton}
-        </div>
-    `;
+            // Animate crowdsource section
+            const crowdsourceSection = detail.querySelector('.crowdsource-section');
+            if (crowdsourceSection) {
+                crowdsourceSection.style.opacity = '0';
+                crowdsourceSection.style.animation = 'slideUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+                crowdsourceSection.style.animationDelay = `${steps.length * 0.1 + 0.2}s`;
+            }
+        }, 200);
+    }, 300);
 }
 
 function showGuidesList() {
-    document.getElementById('guidesContainer').style.display = 'grid';
-    document.getElementById('guideDetail').style.display = 'none';
-    currentGuide = null;
+    const container = document.getElementById('guidesContainer');
+    const detail = document.getElementById('guideDetail');
+
+    // Add animation to go back to list
+    detail.style.animation = 'fadeOut 0.3s ease-out forwards';
+
+    setTimeout(() => {
+        container.style.display = 'grid';
+        container.style.animation = 'slideUp 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+        detail.style.display = 'none';
+        currentGuide = null;
+
+        // Animate guide cards with stagger
+        setTimeout(() => {
+            const guideCards = container.querySelectorAll('.guide-card');
+            guideCards.forEach((card, index) => {
+                card.style.animation = 'slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+                card.style.animationDelay = `${index * 0.05}s`;
+            });
+        }, 100);
+    }, 300);
+}
+
+// Crowdsourcing functionality
+function showSuggestionForm(guideId) {
+    const modal = document.createElement('div');
+    modal.className = 'suggestion-modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🤝 Suggest Improvements</h3>
+                <button class="close-modal" onclick="closeSuggestionModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Help make this guide better! Your suggestions will be reviewed by our regulatory body before being published.</p>
+                
+                <form class="suggestion-form">
+                    <div class="form-group">
+                        <label for="suggestionType">Type of Suggestion:</label>
+                        <select id="suggestionType" required>
+                            <option value="">Select type...</option>
+                            <option value="add-step">Add a new step</option>
+                            <option value="modify-step">Modify existing step</option>
+                            <option value="remove-step">Remove a step</option>
+                            <option value="update-info">Update information</option>
+                            <option value="fix-error">Fix an error</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="stepNumber">Step Number (if applicable):</label>
+                        <input type="number" id="stepNumber" min="1" placeholder="e.g., 3">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="suggestionText">Your Suggestion:</label>
+                        <textarea id="suggestionText" rows="6" required 
+                                placeholder="Describe what you'd like to add, change, or remove. Be specific and provide reasons if possible."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userEmail">Your Email (optional):</label>
+                        <input type="email" id="userEmail" placeholder="your.email@example.com">
+                        <small>We may contact you for clarification. Your email won't be shared publicly.</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="userExperience">Your Experience:</label>
+                        <textarea id="userExperience" rows="3" 
+                                placeholder="Briefly describe your experience with this process (optional but helpful)"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-btn" onclick="closeSuggestionModal()">Cancel</button>
+                <button class="submit-suggestion-btn" onclick="submitSuggestion('${guideId}')">
+                    📤 Submit Suggestion
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+    modal.style.animation = 'fadeIn 0.3s ease-out forwards';
+
+    // Animate modal content
+    setTimeout(() => {
+        const modalContent = modal.querySelector('.modal-content');
+        modalContent.style.animation = 'slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+    }, 100);
+}
+
+function closeSuggestionModal() {
+    const modal = document.querySelector('.suggestion-modal');
+    if (modal) {
+        modal.style.animation = 'fadeOut 0.3s ease-out forwards';
+        setTimeout(() => {
+            modal.remove();
+        }, 300);
+    }
+}
+
+function submitSuggestion(guideId) {
+    const suggestionType = document.getElementById('suggestionType').value;
+    const stepNumber = document.getElementById('stepNumber').value;
+    const suggestionText = document.getElementById('suggestionText').value;
+    const userEmail = document.getElementById('userEmail').value;
+    const userExperience = document.getElementById('userExperience').value;
+
+    if (!suggestionType || !suggestionText.trim()) {
+        alert('Please fill in the required fields (Type and Suggestion).');
+        return;
+    }
+
+    // Demo functionality - in real app, this would be sent to server
+    const suggestionData = {
+        guideId: guideId,
+        type: suggestionType,
+        stepNumber: stepNumber,
+        suggestion: suggestionText,
+        email: userEmail,
+        experience: userExperience,
+        timestamp: new Date().toISOString(),
+        status: 'pending'
+    };
+
+    console.log('Suggestion submitted:', suggestionData);
+
+    // Show success message
+    const modal = document.querySelector('.suggestion-modal');
+    const modalBody = modal.querySelector('.modal-body');
+
+    modalBody.innerHTML = `
+        <div class="success-message">
+            <div class="success-icon">✅</div>
+            <h4>Thank You!</h4>
+            <p>Your suggestion has been submitted to our regulatory body for review.</p>
+            <div class="suggestion-details">
+                <p><strong>Submission ID:</strong> SUG-${Math.random().toString(36).substr(2, 9).toUpperCase()}</p>
+                <p><strong>Status:</strong> Pending Review</p>
+                <p><strong>Estimated Review Time:</strong> 3-5 business days</p>
+            </div>
+            <p class="note">You'll receive an email notification once your suggestion is reviewed.</p>
+        </div>
+    `;
+
+    const modalFooter = modal.querySelector('.modal-footer');
+    modalFooter.innerHTML = `
+        <button class="close-btn" onclick="closeSuggestionModal()">Close</button>
+    `;
+
+    setTimeout(() => {
+        closeSuggestionModal();
+    }, 5000); // Auto close after 5 seconds
 }
 
 function handleGuideAction(target) {
@@ -504,10 +781,80 @@ function handleGuideAction(target) {
 
 // Document generator functions
 function resetDocumentGenerator() {
-    document.getElementById('generatorOptions').style.display = 'block';
-    document.getElementById('documentForm').style.display = 'none';
-    document.getElementById('generatedDocument').style.display = 'none';
+    const generatorOptions = document.getElementById('generatorOptions');
+    const documentForm = document.getElementById('documentForm');
+    const generatedDocument = document.getElementById('generatedDocument');
+
+    // Reset display states
+    generatorOptions.style.display = 'block';
+    documentForm.style.display = 'none';
+    generatedDocument.style.display = 'none';
+
+    // Clear any inline animation styles
+    generatorOptions.style.animation = '';
+    generatorOptions.style.opacity = '';
+    generatorOptions.style.transform = '';
+
+    documentForm.style.animation = '';
+    documentForm.style.opacity = '';
+    documentForm.style.transform = '';
+
+    generatedDocument.style.animation = '';
+    generatedDocument.style.opacity = '';
+    generatedDocument.style.transform = '';
+
+    // Reset document type buttons animation states
+    const docButtons = generatorOptions.querySelectorAll('.doc-type-btn');
+    docButtons.forEach(btn => {
+        btn.style.animation = '';
+        btn.style.opacity = '';
+        btn.style.transform = '';
+        btn.style.animationDelay = '';
+    });
+
+    // Reset form groups if they exist
+    const formGroups = documentForm.querySelectorAll('.form-group');
+    formGroups.forEach(group => {
+        group.style.animation = '';
+        group.style.opacity = '';
+        group.style.transform = '';
+        group.style.animationDelay = '';
+    });
+
     selectedDocumentType = null;
+}
+
+function backToDocumentTypes() {
+    const optionsDiv = document.getElementById('generatorOptions');
+    const formDiv = document.getElementById('documentForm');
+    const generatedDiv = document.getElementById('generatedDocument');
+
+    // Add fade out animation to current form
+    formDiv.style.animation = 'fadeOut 0.3s ease-out forwards';
+    generatedDiv.style.animation = 'fadeOut 0.3s ease-out forwards';
+
+    setTimeout(() => {
+        // Hide form and generated document
+        formDiv.style.display = 'none';
+        generatedDiv.style.display = 'none';
+
+        // Show and animate document type options
+        optionsDiv.style.display = 'block';
+        optionsDiv.style.animation = 'slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+
+        // Animate document type buttons with stagger
+        setTimeout(() => {
+            const docButtons = optionsDiv.querySelectorAll('.doc-type-btn');
+            docButtons.forEach((btn, index) => {
+                btn.style.opacity = '0';
+                btn.style.animation = 'scaleIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+                btn.style.animationDelay = `${index * 0.05}s`;
+            });
+        }, 200);
+
+        // Clear selected document type
+        selectedDocumentType = null;
+    }, 300);
 }
 
 function selectDocumentType(type) {
@@ -519,11 +866,28 @@ function selectDocumentType(type) {
         return;
     }
 
-    document.getElementById('generatorOptions').style.display = 'none';
+    // Add fade out animation to options
+    const optionsDiv = document.getElementById('generatorOptions');
+    optionsDiv.style.animation = 'fadeOut 0.3s ease-out forwards';
 
-    renderDocumentForm(template);
+    setTimeout(() => {
+        optionsDiv.style.display = 'none';
+        renderDocumentForm(template);
 
-    document.getElementById('documentForm').style.display = 'block';
+        const formDiv = document.getElementById('documentForm');
+        formDiv.style.display = 'block';
+        formDiv.style.animation = 'slideUp 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+
+        // Animate form elements with stagger
+        setTimeout(() => {
+            const formElements = formDiv.querySelectorAll('.form-group');
+            formElements.forEach((element, index) => {
+                element.style.animation = 'slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+                element.style.animationDelay = `${index * 0.1}s`;
+                element.style.opacity = '0';
+            });
+        }, 100);
+    }, 300);
 }
 
 function renderDocumentForm(template) {
@@ -554,6 +918,7 @@ function renderDocumentForm(template) {
     });
 
     formContainer.innerHTML = `
+        <button class="back-btn" onclick="backToDocumentTypes()">← Back to Document Types</button>
         <h3>${template.title}</h3>
         <form id="documentFormElement">
             ${fieldsHtml}

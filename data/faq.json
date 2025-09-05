@@ -1,58 +1,58 @@
 [
     {
         "id": 1,
-        "question": "Can my landlord keep my security deposit?",
-        "answer": "According to the Premises Rent Act of Bangladesh, your landlord cannot arbitrarily keep your security deposit. The deposit must be returned when you vacate the premises, minus any legitimate deductions for damages beyond normal wear and tear. If your landlord refuses to return the deposit without valid reasons, you have the right to file a complaint.",
+        "question": "My landlord refuses to return my security deposit",
+        "answer": "According to the Premises Rent Act 1991, your landlord cannot arbitrarily keep your security deposit. The deposit must be returned when you vacate the premises, minus legitimate deductions for damages beyond normal wear and tear. Section 13 of the Act provides protection against illegal retention of deposits. If your landlord refuses without valid reasons, you have the right to file a complaint.",
         "actionText": "Next: Learn how to file a complaint",
         "actionTarget": "gd-financial-dispute"
     },
     {
         "id": 2,
-        "question": "What are my consumer rights?",
-        "answer": "Under the Consumer Rights Protection Act 2009, you have the right to: 1) Receive goods and services as promised, 2) Get accurate information about products, 3) Fair pricing without deceptive practices, 4) Safe products that won't harm you, 5) Compensation for defective products or poor services. You can file complaints with the Department of Consumer Affairs or local magistrates.",
+        "question": "I bought a defective product, what are my rights?",
+        "answer": "Under the Consumer Rights Protection Act 2009, you have comprehensive rights: 1) Right to receive goods as promised (Section 3), 2) Right to accurate product information (Section 4), 3) Protection from unfair trade practices (Section 5), 4) Right to compensation for defective products (Section 6). You can seek remedy through replacement, refund, or compensation. The Act establishes consumer courts for dispute resolution.",
         "actionText": "Next: Learn how to file a consumer complaint",
         "actionTarget": "consumer-complaint"
     },
     {
         "id": 3,
-        "question": "How do I file a police complaint?",
-        "answer": "You can file a police complaint (General Diary or FIR) at any police station. For cognizable offenses (serious crimes), police must register an FIR immediately. For non-cognizable offenses, they will file a General Diary. You have the right to get a copy of your complaint and a receipt with a case number.",
-        "actionText": "Next: See the step-by-step guide",
-        "actionTarget": "police-complaint"
+        "question": "How do I get information from a government office?",
+        "answer": "The Right to Information Act 2009 gives you the legal right to access government information. Under Section 4, every citizen can request information from public authorities. You must submit a written application with a nominal fee. The authority must respond within 20 working days (Section 9). If denied, you can appeal to the Information Commission.",
+        "actionText": "Next: Generate an RTI application",
+        "actionTarget": "rti-application"
     },
     {
         "id": 4,
-        "question": "What should I do if I bought a defective product?",
-        "answer": "If you purchased a defective product, you have several options under consumer protection laws: 1) Return to the seller for replacement or refund, 2) Contact the manufacturer if under warranty, 3) File a complaint with the Department of Consumer Affairs, 4) Seek compensation through consumer court. Keep all receipts and documentation as evidence.",
-        "actionText": "Next: Generate a complaint letter",
-        "actionTarget": "complaint"
+        "question": "Someone is harassing me online, what can I do?",
+        "answer": "The Digital Security Act 2018 provides protection against online harassment. Section 25 covers identity theft, Section 29 covers publication of defamatory information, and Section 31 covers deterioration of law and order through digital means. You can file a complaint with the nearest police station or directly with the Cyber Tribunal. Keep screenshots and evidence of the harassment.",
+        "actionText": "Next: Learn how to report cybercrime",
+        "actionTarget": "cybercrime-complaint"
     },
     {
         "id": 5,
-        "question": "Can police refuse to file my complaint?",
-        "answer": "Police cannot refuse to file your complaint if it relates to a cognizable offense. For cognizable offenses, they must register an FIR immediately. For non-cognizable offenses, they should file a General Diary. If they refuse, you can approach the Superintendent of Police or file a complaint with higher authorities.",
-        "actionText": "Next: Learn the complaint process",
+        "question": "Someone cheated me financially, what legal action can I take?",
+        "answer": "Under Section 420 of the Penal Code 1860, cheating is a criminal offense punishable by imprisonment up to 7 years and fine. If someone dishonestly induced you to deliver property or make/alter a valuable security, you can file an FIR. For criminal breach of trust (Section 406), the punishment is up to 3 years imprisonment. Gather all evidence including documents, communications, and witness statements.",
+        "actionText": "Next: File a police complaint",
         "actionTarget": "police-complaint"
     },
     {
         "id": 6,
         "question": "What are my rights as a tenant?",
-        "answer": "As a tenant in Bangladesh, you have rights under the Premises Rent Act: 1) Right to peaceful enjoyment of the property, 2) Protection from arbitrary rent increases, 3) Right to get back your security deposit, 4) Protection from illegal eviction, 5) Right to proper notice before eviction. Your landlord cannot enter without permission except in emergencies.",
-        "actionText": "Next: Learn about tenant complaints",
-        "actionTarget": "gd-financial-dispute"
+        "answer": "The Premises Rent Act 1991 protects tenant rights: 1) Right to peaceful enjoyment (Section 3), 2) Protection from arbitrary rent increases (Section 6), 3) Right to proper notice before eviction (Section 11), 4) Protection from illegal entry by landlord (Section 12). Your landlord cannot evict you without following proper legal procedures and giving adequate notice.",
+        "actionText": "Next: Learn about tenant complaint procedures",
+        "actionTarget": "tenant-dispute"
     },
     {
         "id": 7,
-        "question": "How do I get a birth certificate?",
-        "answer": "To obtain a birth certificate: 1) Visit your local Registrar office or Union Parishad, 2) Fill out the application form, 3) Provide required documents (hospital certificate, school certificate, or affidavit), 4) Pay the prescribed fee, 5) Submit application and wait for processing. Online applications are also available through government portals.",
-        "actionText": "Next: Generate an application",
-        "actionTarget": "application"
+        "question": "How do I file a complaint with consumer protection?",
+        "answer": "Under the Consumer Rights Protection Act 2009, you can file complaints with: 1) District Consumer Rights Protection Officer (for local issues), 2) Directorate of National Consumer Rights Protection (for serious violations), 3) Mobile Court (for immediate action). You need purchase receipt, product details, and description of the problem. The complaint can be filed within 3 years of the incident.",
+        "actionText": "Next: Generate a consumer complaint letter",
+        "actionTarget": "complaint"
     },
     {
         "id": 8,
-        "question": "What can I do about workplace harassment?",
-        "answer": "If you face workplace harassment: 1) Document all incidents with dates and witnesses, 2) Report to your HR department first, 3) File a complaint with the Labor Department, 4) Contact the High Court if it involves sexual harassment (as per Supreme Court guidelines), 5) You can also file a General Diary with police for serious cases.",
-        "actionText": "Next: File a formal complaint",
-        "actionTarget": "complaint"
+        "question": "Can police refuse to file my complaint?",
+        "answer": "Police cannot refuse to file your complaint if it relates to a cognizable offense under the Code of Criminal Procedure 1898. For cognizable offenses (serious crimes), they must register an FIR immediately. For non-cognizable offenses, they should file a General Diary. If they refuse, you can approach the Superintendent of Police or file a complaint with higher authorities as per legal procedures.",
+        "actionText": "Next: Learn the complaint filing process",
+        "actionTarget": "police-complaint"
     }
 ]

@@ -32,27 +32,31 @@
     {
         "id": "consumer-complaint",
         "title": "Filing a Consumer Complaint",
-        "description": "How to file a complaint for defective products or poor services",
+        "description": "How to file a complaint for defective products or poor services under Consumer Rights Protection Act 2009",
         "category": "Consumer Rights",
         "steps": [
             {
-                "title": "Collect Evidence",
-                "description": "Gather purchase receipts, product photos, warranty cards, and any communication with the seller."
+                "title": "Document Your Case",
+                "description": "Gather purchase receipts, product photos, warranty cards, defect evidence, and any communication with the seller. Under Section 6 of the Act, proper documentation strengthens your case."
             },
             {
                 "title": "Contact the Seller First",
-                "description": "Try to resolve the issue directly with the seller or service provider. Keep records of these attempts."
+                "description": "Try to resolve directly with the seller/manufacturer. Keep written records of these attempts. This shows good faith effort before formal complaint."
             },
             {
-                "title": "Visit Consumer Affairs Office",
-                "description": "If direct contact fails, visit your local Consumer Affairs office or the National Consumer Rights Protection office."
+                "title": "Visit Consumer Rights Office",
+                "description": "Go to your District Consumer Rights Protection Office or the Directorate of National Consumer Rights Protection. Find office locations and contact details."
             },
             {
                 "title": "File Written Complaint",
-                "description": "Submit a written complaint with all supporting documents. Include timeline, financial loss, and desired resolution."
+                "description": "Submit complaint with supporting documents. Include timeline, financial loss, desired resolution. Fee: Usually 50-200 Taka depending on claim amount."
+            },
+            {
+                "title": "Follow Up and Attend Hearings",
+                "description": "Keep your complaint receipt number. Attend scheduled hearings. You may get compensation, replacement, or refund as per Act provisions."
             }
         ],
-        "actionText": "Generate a Complaint Letter",
+        "actionText": "Generate a Consumer Complaint Letter",
         "actionTarget": "complaint"
     },
     {
@@ -174,5 +178,61 @@
         ],
         "actionText": "Generate an Application",
         "actionTarget": "application"
+    },
+    {
+        "id": "rti-application",
+        "title": "Filing an RTI Application",
+        "description": "How to request government information under Right to Information Act 2009",
+        "category": "Government Transparency",
+        "steps": [
+            {
+                "title": "Identify the Right Authority",
+                "description": "Determine which government office/department holds the information you need. Each ministry, department, and local government body is covered under the Act."
+            },
+            {
+                "title": "Prepare Your Application",
+                "description": "Write a clear application stating what specific information you want. Be precise - vague requests may be rejected. Include your contact details and reason (optional)."
+            },
+            {
+                "title": "Submit with Fee",
+                "description": "Submit application to the designated officer with 2 Taka fee per page for information. For BPL (Below Poverty Line) citizens, the fee is waived."
+            },
+            {
+                "title": "Wait for Response",
+                "description": "Authority must respond within 20 working days (Section 9). If information affects third parties, they have additional 30 days after consultation."
+            },
+            {
+                "title": "Appeal if Necessary",
+                "description": "If request is denied or ignored, you can appeal to the Information Commission within 30 days. Appeals are free of cost."
+            }
+        ],
+        "actionText": "Generate an RTI Application",
+        "actionTarget": "rti"
+    },
+    {
+        "id": "cybercrime-complaint",
+        "title": "Reporting Cybercrime",
+        "description": "How to report online harassment and cybercrimes under Digital Security Act 2018",
+        "category": "Digital Rights",
+        "steps": [
+            {
+                "title": "Preserve Evidence",
+                "description": "Take screenshots of offensive content, save URLs, note dates/times. Don't delete anything. Evidence is crucial for Digital Security Act cases."
+            },
+            {
+                "title": "Determine the Offense Type",
+                "description": "Identity if it's harassment (Section 25), defamation (Section 29), or threat to law and order (Section 31). This determines the complaint procedure."
+            },
+            {
+                "title": "File Police Complaint",
+                "description": "Visit your nearest police station or Cyber Crime Unit. They must accept complaints related to Digital Security Act offenses. Get a complaint receipt."
+            },
+            {
+                "title": "Follow Up Investigation",
+                "description": "Police will investigate and may file case in Cyber Tribunal. Cooperate with investigation and provide additional evidence if requested."
+            }
+        ],
+        "actionText": "Generate a Cybercrime Complaint",
+        "actionTarget": "complaint"
     }
 ]
