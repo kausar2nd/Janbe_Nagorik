@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     loadData();
     setupEventListeners();
     showSection('home');
+    initializeChatbot();
 });
 
 // Load all data
@@ -426,6 +427,79 @@ function showSection(sectionName) {
 }
 
 // Chatbot functions
+function initializeChatbot() {
+    const chatMessages = document.getElementById('chatMessages');
+    if (chatMessages && chatMessages.children.length === 0) {
+        // Add initial bot message
+        const initialMessage = `Hello! I'm your legal assistant powered by actual Bangladeshi laws. Ask me about your rights and I'll provide simple, sourced answers.
+
+<b>Legal Coverage:</b> Consumer Rights Protection Act 2009, Right to Information Act 2009, Penal Code 1860, Premises Rent Control Act 1991, Family Courts Ordinance 2023, and Road Transport Act 2018 — plus essential public services (passport, birth certificate, trade license).
+
+<div class="suggested-questions">
+    <p><strong>Try asking about common issues:</strong></p>
+    <button class="suggestion-btn" onclick="askQuestion('My landlord refuses to return my security deposit')">
+        My landlord won't return my security deposit
+    </button>
+    <button class="suggestion-btn" onclick="askQuestion('I bought a defective product, what are my rights?')">
+        I bought a defective product, what are my rights?
+    </button>
+    <button class="suggestion-btn" onclick="askQuestion('How do I get information from a government office?')">
+        How do I get information from a government office?
+    </button>
+    <button class="suggestion-btn" onclick="askQuestion('How do I request information under the Right to Information Act 2009?')">
+        How to request information under RTI 2009
+    </button>
+    <button class="suggestion-btn" onclick="askQuestion('We have a family dispute—what court hears maintenance or custody matters?')">
+        Which court hears family disputes?
+    </button>
+</div>`;
+
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'chat-message bot-message';
+        messageDiv.innerHTML = `<div class="message-content">${initialMessage}</div>`;
+        chatMessages.appendChild(messageDiv);
+    }
+}
+
+function toggleChatbotFullscreen() {
+    const chatbotContainer = document.querySelector('.chatbot-container');
+    const fullscreenIcon = document.querySelector('.fullscreen-icon');
+    const isFullscreen = chatbotContainer.classList.contains('fullscreen');
+
+    console.log('Toggle fullscreen called, current state:', isFullscreen);
+
+    if (isFullscreen) {
+        // Exit fullscreen
+        console.log('Exiting fullscreen mode');
+        chatbotContainer.classList.remove('fullscreen');
+        fullscreenIcon.textContent = '⛶';
+        fullscreenIcon.parentElement.title = 'Enter Fullscreen';
+        document.body.classList.remove('chatbot-fullscreen-active');
+        document.documentElement.classList.remove('chatbot-fullscreen-active');
+
+        // Reset any inline styles that might interfere
+        document.body.style.overflow = '';
+        document.body.style.height = '';
+        document.body.style.position = '';
+        document.body.style.width = '';
+    } else {
+        // Enter fullscreen
+        console.log('Entering fullscreen mode');
+        chatbotContainer.classList.add('fullscreen');
+        fullscreenIcon.textContent = '✕';
+        fullscreenIcon.parentElement.title = 'Exit Fullscreen';
+        document.body.classList.add('chatbot-fullscreen-active');
+        document.documentElement.classList.add('chatbot-fullscreen-active');
+
+        // Ensure the chat messages scroll to bottom
+        setTimeout(() => {
+            const chatMessages = document.getElementById('chatMessages');
+            if (chatMessages) {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }, 100);
+    }
+}
 function askQuestion(question) {
     document.getElementById('chatInput').value = question;
     sendMessage();
@@ -590,6 +664,20 @@ function renderGuides() {
 
         container.appendChild(guideCard);
     });
+
+    // Add "Suggest New Guide" section at the bottom
+    const suggestNewSection = document.createElement('div');
+    suggestNewSection.className = 'suggest-new-guide-section';
+    suggestNewSection.innerHTML = `
+        <div class="suggest-new-guide-card">
+            <h3>Missing a Service Guide?</h3>
+            <p>Help us expand our knowledge base by suggesting new guides for government services or legal processes.</p>
+            <button class="suggest-new-btn" onclick="showNewGuideSuggestionForm()">
+                Suggest a New Guide
+            </button>
+        </div>
+    `;
+    container.appendChild(suggestNewSection);
 }
 
 function showGuideDetail(guideId) {
@@ -822,6 +910,140 @@ function submitSuggestion(guideId) {
     }, 5000); // Auto close after 5 seconds
 }
 
+function showNewGuideSuggestionForm() {
+    const modal = document.createElement('div');
+    modal.className = 'suggestion-modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>💡 Suggest a New Guide</h3>
+                <button class="close-modal" onclick="closeSuggestionModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Help expand our knowledge base! Suggest a new guide for a government service or legal process that we haven't covered yet.</p>
+                
+                <form class="suggestion-form">
+                    <div class="form-group">
+                        <label for="newGuideTitle">Guide Title:</label>
+                        <input type="text" id="newGuideTitle" required 
+                               placeholder="e.g., How to Get a Student Visa, Filing a Noise Complaint">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newGuideCategory">Category:</label>
+                        <select id="newGuideCategory" required>
+                            <option value="">Select category...</option>
+                            <option value="Government Services">Government Services</option>
+                            <option value="Legal">Legal</option>
+                            <option value="Consumer Rights">Consumer Rights</option>
+                            <option value="Business">Business</option>
+                            <option value="Family Courts">Family Courts</option>
+                            <option value="Road Safety">Road Safety</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newGuideDescription">Brief Description:</label>
+                        <textarea id="newGuideDescription" rows="3" required 
+                                placeholder="Briefly describe what this guide would help people accomplish"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newGuideReason">Why is this guide needed?</label>
+                        <textarea id="newGuideReason" rows="4" required 
+                                placeholder="Explain why this guide would be valuable. Have you or others struggled with this process?"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="newGuideSteps">Basic Steps (if you know them):</label>
+                        <textarea id="newGuideSteps" rows="6" 
+                                placeholder="If you're familiar with the process, list the basic steps (optional but helpful)"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="suggesterEmail">Your Email (optional):</label>
+                        <input type="email" id="suggesterEmail" placeholder="your.email@example.com">
+                        <small>We may contact you for more information. Your email won't be shared publicly.</small>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="cancel-btn" onclick="closeSuggestionModal()">Cancel</button>
+                <button class="submit-suggestion-btn" onclick="submitNewGuideSuggestion()">
+                    🚀 Submit New Guide Suggestion
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+    modal.style.animation = 'fadeIn 0.3s ease-out forwards';
+
+    // Animate modal content
+    setTimeout(() => {
+        const modalContent = modal.querySelector('.modal-content');
+        modalContent.style.animation = 'slideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards';
+    }, 100);
+}
+
+function submitNewGuideSuggestion() {
+    const title = document.getElementById('newGuideTitle').value;
+    const category = document.getElementById('newGuideCategory').value;
+    const description = document.getElementById('newGuideDescription').value;
+    const reason = document.getElementById('newGuideReason').value;
+    const steps = document.getElementById('newGuideSteps').value;
+    const email = document.getElementById('suggesterEmail').value;
+
+    if (!title.trim() || !category || !description.trim() || !reason.trim()) {
+        alert('Please fill in all required fields (Title, Category, Description, and Reason).');
+        return;
+    }
+
+    // Submit new guide suggestion to server
+    const newGuideData = {
+        type: 'new-guide',
+        title: title,
+        category: category,
+        description: description,
+        reason: reason,
+        suggestedSteps: steps,
+        email: email,
+        timestamp: new Date().toISOString(),
+        status: 'pending'
+    };
+
+    console.log('New guide suggestion submitted:', newGuideData);
+
+    // Show success message
+    const modal = document.querySelector('.suggestion-modal');
+    const modalBody = modal.querySelector('.modal-body');
+
+    modalBody.innerHTML = `
+        <div class="success-message">
+            <div class="success-icon">🎉</div>
+            <h4>Excellent Idea!</h4>
+            <p>Your new guide suggestion has been submitted to our content team for evaluation.</p>
+            <div class="suggestion-details">
+                <p><strong>Guide Title:</strong> ${title}</p>
+                <p><strong>Submission ID:</strong> NG-${Math.random().toString(36).substr(2, 9).toUpperCase()}</p>
+                <p><strong>Status:</strong> Under Review</p>
+                <p><strong>Estimated Review Time:</strong> 1-2 weeks</p>
+            </div>
+            <p class="note">If approved, we'll research and create this guide. You'll be notified when it's published!</p>
+        </div>
+    `;
+
+    const modalFooter = modal.querySelector('.modal-footer');
+    modalFooter.innerHTML = `
+        <button class="close-btn" onclick="closeSuggestionModal()">Close</button>
+    `;
+
+    setTimeout(() => {
+        closeSuggestionModal();
+    }, 6000); // Auto close after 6 seconds
+}
+
 function handleGuideAction(target) {
     showSection('protirodh');
     setTimeout(() => {
@@ -983,42 +1205,103 @@ function renderDocumentForm(template) {
 }
 
 function generateDocument() {
-    const template = documentTemplates[selectedDocumentType];
-    const formData = new FormData(document.getElementById('documentFormElement'));
+    try {
+        const template = documentTemplates[selectedDocumentType];
 
-    let documentContent = template.template;
+        if (!template) {
+            console.error('Template not found for:', selectedDocumentType);
+            alert('Error: Template not found. Please try again.');
+            return;
+        }
 
-    // Replace placeholders with form data
-    template.fields.forEach(field => {
-        const value = document.getElementById(field.name).value || 'Not provided';
-        const placeholder = `{${field.name}}`;
-        documentContent = documentContent.replace(new RegExp(placeholder, 'g'), value);
-    });
+        console.log('Generating document for type:', selectedDocumentType);
+        console.log('Template:', template);
 
-    // Replace special placeholders
-    const currentDate = new Date().toLocaleDateString('en-BD');
-    documentContent = documentContent.replace(/{currentDate}/g, currentDate);
-    documentContent = documentContent.replace(/{stationName}/g, '[Police Station Name]');
-    documentContent = documentContent.replace(/{officeName}/g, '[Office Name]');
-    documentContent = documentContent.replace(/{officeAddress}/g, '[Office Address]');
+        const formData = new FormData(document.getElementById('documentFormElement'));
+        let documentContent = template.template;
 
-    showGeneratedDocument(documentContent, template.title);
+        console.log('Original template content:', documentContent);
+
+        // Replace placeholders with form data
+        template.fields.forEach(field => {
+            const element = document.getElementById(field.name);
+            const value = element ? (element.value || 'Not provided') : 'Not provided';
+            const placeholder = `{${field.name}}`;
+
+            console.log(`Replacing ${placeholder} with: ${value}`);
+            documentContent = documentContent.replace(new RegExp(placeholder, 'g'), value);
+        });
+
+        // Replace special placeholders
+        const currentDate = new Date().toLocaleDateString('en-BD');
+        documentContent = documentContent.replace(/{currentDate}/g, currentDate);
+        documentContent = documentContent.replace(/{stationName}/g, '[Police Station Name]');
+        documentContent = documentContent.replace(/{officeName}/g, '[Office Name]');
+        documentContent = documentContent.replace(/{officeAddress}/g, '[Office Address]');
+
+        console.log('Final document content:', documentContent);
+
+        if (!documentContent || documentContent.trim() === '') {
+            console.error('Document content is empty after processing');
+            alert('Error: Generated document is empty. Please check your inputs and try again.');
+            return;
+        }
+
+        showGeneratedDocument(documentContent, template.title);
+    } catch (error) {
+        console.error('Error generating document:', error);
+        alert('Error generating document: ' + error.message);
+    }
 }
 
 function showGeneratedDocument(content, title) {
-    document.getElementById('documentForm').style.display = 'none';
+    try {
+        console.log('Showing generated document:', title);
+        console.log('Content length:', content.length);
 
-    const container = document.getElementById('generatedDocument');
-    container.innerHTML = `
-        <h3>Generated ${title}</h3>
-        <div class="document-content">${content}</div>
-        <div class="text-center">
-            <button class="copy-btn" onclick="copyDocument()">Copy to Clipboard</button>
-            <button class="new-document-btn" onclick="resetDocumentGenerator()">Create New Document</button>
-        </div>
-    `;
+        document.getElementById('documentForm').style.display = 'none';
 
-    container.style.display = 'block';
+        const container = document.getElementById('generatedDocument');
+
+        if (!container) {
+            console.error('Generated document container not found');
+            alert('Error: Document container not found. Please refresh the page and try again.');
+            return;
+        }
+
+        // Escape any potentially problematic characters in the title for onclick handlers
+        const safeTitle = title.replace(/'/g, "\\'").replace(/"/g, '\\"');
+
+        // Ensure content is properly formatted for display
+        const formattedContent = content.replace(/\\n/g, '\n'); // Convert escaped newlines to actual newlines
+
+        container.innerHTML = `
+            <h3>Generated ${title}</h3>
+            <div class="document-content">${formattedContent}</div>
+            <div class="document-actions">
+                <button class="download-pdf-btn" onclick="downloadDocumentPDF('${safeTitle}')">
+                    📄 Download PDF
+                </button>
+                <button class="copy-btn" onclick="copyDocument()">
+                    📋 Copy to Clipboard
+                </button>
+                <button class="new-document-btn" onclick="resetDocumentGenerator()">
+                    ➕ Create New Document
+                </button>
+            </div>
+        `;
+
+        container.style.display = 'block';
+
+        console.log('Document displayed successfully');
+
+        // Scroll to the generated document
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    } catch (error) {
+        console.error('Error showing generated document:', error);
+        alert('Error displaying document: ' + error.message);
+    }
 }
 
 function copyDocument() {
@@ -1037,5 +1320,82 @@ function copyDocument() {
         document.execCommand('copy');
         document.body.removeChild(textArea);
         alert('Document copied to clipboard!');
+    }
+}
+
+function downloadDocumentPDF(title) {
+    try {
+        // Get the document content
+        const content = document.querySelector('.document-content').textContent;
+
+        // Create new jsPDF instance
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF('p', 'mm', 'a4');
+
+        // Set up document styling
+        doc.setFont('helvetica');
+        doc.setFontSize(12);
+
+        // Add title
+        doc.setFontSize(16);
+        doc.setFont('helvetica', 'bold');
+        doc.text(title, 20, 20);
+
+        // Add a line under title
+        doc.setLineWidth(0.5);
+        doc.line(20, 25, 190, 25);
+
+        // Reset font for content
+        doc.setFontSize(11);
+        doc.setFont('helvetica', 'normal');
+
+        // Split content into lines and add to PDF
+        const lines = doc.splitTextToSize(content, 170); // 170mm width for margins
+        let yPosition = 35;
+        const lineHeight = 6;
+        const pageHeight = 280; // A4 height minus margins
+
+        lines.forEach((line, index) => {
+            // Check if we need a new page
+            if (yPosition > pageHeight) {
+                doc.addPage();
+                yPosition = 20;
+            }
+
+            doc.text(line, 20, yPosition);
+            yPosition += lineHeight;
+        });
+
+        // Add footer with generation info
+        const pageCount = doc.internal.getNumberOfPages();
+        for (let i = 1; i <= pageCount; i++) {
+            doc.setPage(i);
+            doc.setFontSize(9);
+            doc.setFont('helvetica', 'italic');
+            doc.text(`Generated by Janbe Nagorik - ${new Date().toLocaleDateString()}`, 20, 290);
+            doc.text(`Page ${i} of ${pageCount}`, 170, 290);
+        }
+
+        // Generate filename
+        const timestamp = new Date().toISOString().slice(0, 10);
+        const filename = `${title.replace(/\s+/g, '_')}_${timestamp}.pdf`;
+
+        // Download the PDF
+        doc.save(filename);
+
+        // Show success message
+        const downloadBtn = document.querySelector('.download-pdf-btn');
+        const originalText = downloadBtn.textContent;
+        downloadBtn.textContent = '✅ Downloaded!';
+        downloadBtn.style.background = '#28a745';
+
+        setTimeout(() => {
+            downloadBtn.textContent = originalText;
+            downloadBtn.style.background = '';
+        }, 2000);
+
+    } catch (error) {
+        console.error('Error generating PDF:', error);
+        alert('Error generating PDF. Please try copying the text instead.');
     }
 }
