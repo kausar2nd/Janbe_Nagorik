@@ -2,6 +2,8 @@
 let currentSection = 'home';
 let currentGuide = null;
 let selectedDocumentType = null;
+let currentLanguage = 'en'; // Default to English
+let languageData = {};
 
 // Data Storage
 let faqData = [];
@@ -19,15 +21,21 @@ document.addEventListener('DOMContentLoaded', function () {
 // Load all data
 async function loadData() {
     try {
-        const [faqResponse, guidesResponse, templatesResponse] = await Promise.all([
+        const [faqResponse, guidesResponse, templatesResponse, languageResponse] = await Promise.all([
             fetch('./data/faq.json'),
             fetch('./data/guides.json'),
-            fetch('./data/templates.json')
+            fetch('./data/templates.json'),
+            fetch('./data/languages.json')
         ]);
 
         faqData = await faqResponse.json();
         guidesData = await guidesResponse.json();
         documentTemplates = await templatesResponse.json();
+        languageData = await languageResponse.json();
+
+        // Initialize language based on saved preference or default
+        const savedLanguage = localStorage.getItem('preferred-language') || 'en';
+        setLanguage(savedLanguage);
 
         console.log('Data loaded successfully');
         renderGuides();
@@ -393,8 +401,8 @@ function showSection(sectionName) {
             }
         }
 
-        // Animate forms if in protirodh section
-        if (sectionName === 'protirodh') {
+        // Animate forms if in podokkhep section
+        if (sectionName === 'podokkhep') {
             // First reset the document generator to ensure clean state
             resetDocumentGenerator();
 
@@ -421,7 +429,7 @@ function showSection(sectionName) {
         // Reset chat if needed
     } else if (sectionName === 'sheba') {
         showGuidesList();
-    } else if (sectionName === 'protirodh') {
+    } else if (sectionName === 'podokkhep') {
         // Reset is now handled in the animation block above
     }
 }
@@ -1045,7 +1053,7 @@ function submitNewGuideSuggestion() {
 }
 
 function handleGuideAction(target) {
-    showSection('protirodh');
+    showSection('podokkhep');
     setTimeout(() => {
         selectDocumentType(target);
     }, 100);
@@ -1398,4 +1406,106 @@ function downloadDocumentPDF(title) {
         console.error('Error generating PDF:', error);
         alert('Error generating PDF. Please try copying the text instead.');
     }
+}
+
+// Language Toggle Functions
+function toggleLanguage() {
+    const newLanguage = currentLanguage === 'en' ? 'bn' : 'en';
+    setLanguage(newLanguage);
+    localStorage.setItem('preferred-language', newLanguage);
+}
+
+function setLanguage(lang) {
+    currentLanguage = lang;
+    document.documentElement.lang = lang;
+
+    // Update all elements with data-key attributes
+    const elements = document.querySelectorAll('[data-key]');
+    elements.forEach(element => {
+        const key = element.getAttribute('data-key');
+        if (languageData[lang] && languageData[lang][key]) {
+            element.textContent = languageData[lang][key];
+        }
+    });
+
+    // Update specific elements that need special handling
+    updateDynamicContent(lang);
+
+    console.log(`Language switched to: ${lang}`);
+}
+
+function updateDynamicContent(lang) {
+    // Update chatbot initial message if it exists
+    const chatMessages = document.getElementById('chatMessages');
+    if (chatMessages) {
+        const botMessages = chatMessages.querySelectorAll('.bot-message .message-content p');
+        if (botMessages.length > 0 && languageData[lang]) {
+            // Update the first bot message (initial greeting)
+            const firstMessage = botMessages[0];
+            if (firstMessage && firstMessage.textContent.includes('Hello! I\'m your legal assistant') ||
+                firstMessage.textContent.includes('হ্যালো! আমি আপনার আইনি সহায়ক')) {
+                firstMessage.textContent = languageData[lang]['chatbot_initial_message'];
+            }
+        }
+    }
+
+    // Update chat input placeholder
+    const chatInput = document.getElementById('chatInput');
+    if (chatInput && languageData[lang]) {
+        chatInput.placeholder = languageData[lang]['chat_placeholder'];
+    }
+
+    // Update send button
+    const sendBtn = document.querySelector('.send-btn');
+    if (sendBtn && languageData[lang]) {
+        sendBtn.textContent = languageData[lang]['send_button'];
+    }
+
+    // Update any visible section content based on current section
+    updateSectionContent(lang);
+}
+
+function updateSectionContent(lang) {
+    // Update section headers and content based on current section
+    if (currentSection === 'gyan') {
+        const sectionHeader = document.querySelector('#gyan .section-header h2');
+        const sectionSubtitle = document.querySelector('#gyan .section-header p');
+
+        if (sectionHeader && languageData[lang]) {
+            sectionHeader.textContent = languageData[lang]['gyan_section_title'];
+        }
+        if (sectionSubtitle && languageData[lang]) {
+            sectionSubtitle.textContent = languageData[lang]['gyan_section_subtitle'];
+        }
+    } else if (currentSection === 'sheba') {
+        const sectionHeader = document.querySelector('#sheba .section-header h2');
+        const sectionSubtitle = document.querySelector('#sheba .section-header p');
+        const searchInput = document.querySelector('#guideSearch');
+
+        if (sectionHeader && languageData[lang]) {
+            sectionHeader.textContent = languageData[lang]['sheba_section_title'];
+        }
+        if (sectionSubtitle && languageData[lang]) {
+            sectionSubtitle.textContent = languageData[lang]['sheba_section_subtitle'];
+        }
+        if (searchInput && languageData[lang]) {
+            searchInput.placeholder = languageData[lang]['search_guides'];
+        }
+    } else if (currentSection === 'podokkhep') {
+        const sectionHeader = document.querySelector('#podokkhep .section-header h2');
+        const sectionSubtitle = document.querySelector('#podokkhep .section-header p');
+
+        if (sectionHeader && languageData[lang]) {
+            sectionHeader.textContent = languageData[lang]['podokkhep_section_title'];
+        }
+        if (sectionSubtitle && languageData[lang]) {
+            sectionSubtitle.textContent = languageData[lang]['podokkhep_section_subtitle'];
+        }
+    }
+}
+
+function getText(key) {
+    return languageData[currentLanguage] && languageData[currentLanguage][key]
+        ? languageData[currentLanguage][key]
+        : key;
 }

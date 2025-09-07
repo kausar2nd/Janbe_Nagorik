@@ -21,10 +21,14 @@
                 </div>
             </a>
             <nav class="nav-menu">
-                <a href="#home" class="nav-link active" data-section="home">Home</a>
-                <a href="#gyan" class="nav-link" data-section="gyan">Gyan</a>
-                <a href="#sheba" class="nav-link" data-section="sheba">Sheba</a>
-                <a href="#protirodh" class="nav-link" data-section="protirodh">Protirodh</a>
+                <a href="#home" class="nav-link active" data-section="home" data-key="nav_home">Home</a>
+                <a href="#gyan" class="nav-link" data-section="gyan" data-key="nav_gyan">Gyan</a>
+                <a href="#sheba" class="nav-link" data-section="sheba" data-key="nav_sheba">Sheba</a>
+                <a href="#podokkhep" class="nav-link" data-section="podokkhep" data-key="nav_podokkhep">Podokkhep</a>
+                <button class="language-toggle-btn" onclick="toggleLanguage()" title="Switch Language">
+                    <span class="lang-icon">🌐</span>
+                    <span class="lang-text" data-key="lang_toggle">বাংলা</span>
+                </button>
             </nav>
         </div>
     </header>
@@ -35,37 +39,42 @@
         <section id="home" class="section active">
             <div class="container">
                 <div class="hero">
-                    <h1>Empowering Citizens With Clear, Actionable Paths</h1>
-                    <p>Navigate the legal system with confidence. Get clear guidance on your rights and generate
+                    <h1 data-key="hero_title">Empowering Citizens With Clear, Actionable Paths</h1>
+                    <p data-key="hero_subtitle">Navigate the legal system with confidence. Get clear guidance on your
+                        rights and generate
                         professional documents for legal and government matters.</p>
                     <div class="problem-statement">
-                        <p><strong>Legal Coverage:</strong> Consumer Rights Protection Act 2009, Right to Information
-                            Act 2009,
-                            Penal Code 1860, Premises Rent Control Act 1991, Family Courts Ordinance 2023, and Road
-                            Transport Act 2018 —
-                            plus essential public services (passport, birth certificate, trade license).</p>
+                        <p><strong data-key="legal_coverage_title">Legal Coverage:</strong> <span
+                                data-key="legal_coverage_text">Consumer Rights Protection Act 2009, Right to Information
+                                Act 2009,
+                                Penal Code 1860, Premises Rent Control Act 1991, Family Courts Ordinance 2023, and Road
+                                Transport Act 2018 —
+                                plus essential public services (passport, birth certificate, trade license).</span></p>
                     </div>
                     <div class="hero-modules">
                         <div class="module-card" onclick="showSection('gyan')">
                             <div class="module-icon">🎓</div>
-                            <h3>Gyan</h3>
-                            <p>Legal Knowledge Assistant</p>
-                            <p class="module-desc">Ask legal questions in plain Bengali or English. Get simple answers
+                            <h3 data-key="module_gyan_title">Gyan</h3>
+                            <p data-key="module_gyan_subtitle">Legal Knowledge Assistant</p>
+                            <p class="module-desc" data-key="module_gyan_desc">Ask legal questions in plain Bengali or
+                                English. Get simple answers
                                 from actual Bangladeshi laws with sources cited.
                             </p>
                         </div>
                         <div class="module-card" onclick="showSection('sheba')">
                             <div class="module-icon">📋</div>
-                            <h3>Sheba</h3>
-                            <p>Government Process Wiki</p>
-                            <p class="module-desc">Step-by-step guides for government services with required documents,
+                            <h3 data-key="module_sheba_title">Sheba</h3>
+                            <p data-key="module_sheba_subtitle">Government Process Wiki</p>
+                            <p class="module-desc" data-key="module_sheba_desc">Step-by-step guides for government
+                                services with required documents,
                                 fees, and office locations.</p>
                         </div>
-                        <div class="module-card" onclick="showSection('protirodh')">
+                        <div class="module-card" onclick="showSection('podokkhep')">
                             <div class="module-icon">⚖️</div>
-                            <h3>Protirodh</h3>
-                            <p>Smart Document Generator</p>
-                            <p class="module-desc">Generate professional drafts of official documents by answering
+                            <h3 data-key="module_podokkhep_title">Podokkhep</h3>
+                            <p data-key="module_podokkhep_subtitle">Smart Document Generator</p>
+                            <p class="module-desc" data-key="module_podokkhep_desc">Generate professional drafts of
+                                official documents by answering
                                 simple questions.</p>
                         </div>
                     </div>
@@ -77,8 +86,9 @@
         <section id="gyan" class="section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Gyan - Legal Knowledge Assistant</h2>
-                    <p>Ask questions in plain Bengali or English. Get simple answers from actual Bangladeshi laws.</p>
+                    <h2 data-key="gyan_section_title">Gyan - Legal Knowledge Assistant</h2>
+                    <p data-key="gyan_section_subtitle">Ask questions in plain Bengali or English. Get simple answers
+                        from actual Bangladeshi laws.</p>
                 </div>
                 <div class="chatbot-container">
                     <button class="fullscreen-toggle-btn" onclick="toggleChatbotFullscreen()" title="Toggle Fullscreen">
@@ -122,8 +132,8 @@
                     </div>
                     <div class="chat-input-container">
                         <input type="text" id="chatInput" placeholder="Ask your legal question..."
-                            onkeypress="handleChatKeyPress(event)">
-                        <button onclick="sendMessage()" class="send-btn">Send</button>
+                            data-key="chat_placeholder" onkeypress="handleChatKeyPress(event)">
+                        <button onclick="sendMessage()" class="send-btn" data-key="send_button">Send</button>
                     </div>
                 </div>
             </div>
@@ -133,8 +143,9 @@
         <section id="sheba" class="section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Sheba - Government Process Wiki</h2>
-                    <p>Crowdsourced step-by-step guides for essential services (passport, birth certificate,
+                    <h2 data-key="sheba_section_title">Sheba - Government Process Wiki</h2>
+                    <p data-key="sheba_section_subtitle">Crowdsourced step-by-step guides for essential services
+                        (passport, birth certificate,
                         trade license) and legal processes.</p>
                 </div>
                 <div class="guides-container" id="guidesContainer">
@@ -146,20 +157,23 @@
             </div>
         </section>
 
-        <!-- Protirodh Section (Document Generator) -->
-        <section id="protirodh" class="section">
+        <!-- Podokkhep Section (Document Generator) -->
+        <section id="podokkhep" class="section">
             <div class="container">
                 <div class="section-header">
-                    <h2>Protirodh - Smart Document Generator</h2>
-                    <p>Generate professional drafts of official documents by answering simple questions</p>
+                    <h2 data-key="podokkhep_section_title">Podokkhep - Smart Document Generator</h2>
+                    <p data-key="podokkhep_section_subtitle">Generate professional drafts of official documents by
+                        answering simple questions</p>
                 </div>
-                <div class="protirodh-intro" style="margin-bottom: 1rem;">
-                    <h3 style="margin-bottom: .5rem;">What you can create</h3>
+                <div class="podokkhep-intro" style="margin-bottom: 1rem;">
+                    <h3 style="margin-bottom: .5rem;" data-key="what_you_can_create">What you can create</h3>
                     <ul style="margin-left: 1.2rem;">
-                        <li>General Diary (GD) for financial disputes or incidents</li>
-                        <li>Consumer Complaint Letter for defective products/poor service</li>
-                        <li>Government Service Application (e.g., birth certificate, passport, trade license)</li>
-                        <li>Right to Information (RTI) Application under the RTI Act 2009</li>
+                        <li data-key="gd_for_disputes">General Diary (GD) for financial disputes or incidents</li>
+                        <li data-key="consumer_complaint">Consumer Complaint Letter for defective products/poor service
+                        </li>
+                        <li data-key="government_application">Government Service Application (e.g., birth certificate,
+                            passport, trade license)</li>
+                        <li data-key="legal_notice">Right to Information (RTI) Application under the RTI Act 2009</li>
                     </ul>
                     <h3 style="margin: 1rem 0 .5rem;">How it works</h3>
                     <ol style="margin-left: 1.2rem;">

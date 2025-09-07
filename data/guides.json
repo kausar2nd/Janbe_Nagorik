@@ -211,8 +211,8 @@
     },
     {
         "id": "family-court-overview",
-        "title": "Family Court Basics (Prototype)",
-        "description": "High-level overview for maintenance/divorce/child custody under Family Courts Ordinance 2023 (demo content)",
+        "title": "Family Court Basics",
+        "description": "High-level overview for maintenance/divorce/child custody under Family Courts Ordinance 2023",
         "category": "Family Courts",
         "steps": [
             {
@@ -237,8 +237,8 @@
     },
     {
         "id": "road-transport-basics",
-        "title": "Road Transport Basics (Prototype)",
-        "description": "Essential steps for traffic fines and documents under the Road Transport Act 2018 (demo content)",
+        "title": "Road Transport Basics",
+        "description": "Essential steps for traffic fines and documents under the Road Transport Act 2018",
         "category": "Road Safety",
         "steps": [
             {
