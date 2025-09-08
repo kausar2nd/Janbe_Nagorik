@@ -1,0 +1,11 @@
+# Ignore folder
+others/
+
+# Ignore PDF files
+*.pdf
+
+# Ignore PowerPoint files
+*.pptx
+
+# Ignore specific file
+instructions.md
